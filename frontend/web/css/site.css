@@ -1,4 +1,5 @@
-main > .container {
+/*main > .container {*/
+main > .content {
     padding: 70px 15px 20px;
 }
 
@@ -8,7 +9,8 @@ main > .container {
     height: 60px;
 }
 
-.footer > .container {
+/*.footer > .container {*/
+.footer > .content {
     padding-right: 15px;
     padding-left: 15px;
 }
