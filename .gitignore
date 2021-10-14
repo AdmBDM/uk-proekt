@@ -44,3 +44,4 @@ backend/runtime
 backend/web/index-test.php
 backend/web/robots.txt
 /images/
+/common/css/sass/.sass-cache/

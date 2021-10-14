@@ -44,7 +44,28 @@ use yii\web\View;
 
 	<div class="header-nav">
 		<div class="content">
-			Здесь будет навигация
+			<div class="header-nav-menu">
+				<div class="header-nav-menu-center">
+					<ul class="header-nav-menu-list">
+						<li class="header-nav-menu-item">
+<!--							<a href="/index.php#about">О компании</a>-->
+							<a href="#">О компании</a>
+						</li>
+						<li class="header-nav-menu-item">
+<!--							<a href="https://uk-proekt.ru/raskrytie-informatsii/" aria-current="page">Раскрытие информации</a>-->
+							<a href="#" aria-current="page">Раскрытие информации</a>
+						</li>
+						<li class="header-nav-menu-item">
+<!--							<a href="https://uk-proekt.ru/news/">Новости</a>-->
+							<a href="#">Новости</a>
+						</li>
+						<li class="header-nav-menu-item">
+<!--							<a href="https://uk-proekt.ru/contacts/">Контакты</a>-->
+							<a href="#">Контакты</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 	</div>
 
