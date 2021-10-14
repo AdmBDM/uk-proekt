@@ -1,41 +1,110 @@
 footer
 	position: relative
 	width: 100%
-	background-color: $clr_footer
+	background-color: $clr_footer_bck
+
+.footer-info-area
+	height: $height_footer_area
+	background-image: url(/images/footer-info.jpg)
+	background-size: cover
+	position: relative
+	background-repeat: no-repeat
+	background-attachment: scroll
+
+.footer-info-area:before
+	background-size: cover
+	background-color: $clr_120_op95
+	background-repeat: repeat
+	background-attachment: scroll
+	height: 100%
+	width: 100%
+	z-index: 0
+	position: absolute
+	top: 0
+	left: 0
+	content: ""
+
+.footer-area-inner-wrap
+	display: block
+	padding: 100px 0
+
+.footer-container
+	width: 100%
+	max-width: 1200px
+	padding-left: 15px
+	padding-right: 15px
+	margin-left: auto
+	margin-right: auto
+
+.footer-area-row
+	margin-left: -15px
+	margin-right: -15px
+	width: 100%
+
+.footer-area-col
+	position: relative
+	width: 25%
+	padding-left: 15px
+	padding-right: 15px
+	min-height: 1px
+	color: $clr_footer_txt
+
+
+.footer-copyright
+	margin: 0 20px
+	height: $height_footer
+	background-color: $clr_footer_bck
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+
+	span
+		font-size: 13px
+		color: $clr_footer_txt
+
+		a
+			color: $clr_footer_txt
+
+		a:hover
+			font-weight: bold
+			font-style: italic
+			text-decoration: none
 
 footer > .content
 	padding-right: 15px
 	padding-left: 15px
 
-	.footer-title
-		position: absolute
-		top: 25%
-		left: 40%
-		h3
-			color: $clr_white
-			font-weight: bold
-			text-transform: uppercase
+	//.footer-title
+	//	position: absolute
+	//	top: 25%
+	//	left: 40%
+	//	h3
+	//		color: $clr_white
+	//		font-weight: bold
+	//		text-transform: uppercase
+	//
+	//.footer-info
+	//	display: flex
+	//	flex-direction: row
+	//	flex-wrap: nowrap
+	//	justify-content: space-between
+	//	align-items: stretch
+	//	padding-top: 3%
+	//	padding-bottom: 2%
+	//
+	//	.footer-info__contacts
+	//		padding-top: 7%
+	//
+	//		img
+	//			margin-right: 10px
+	//
+	//		a, span
+	//			font-size: 1.25em
+	//			padding-top: 6%
+	//			display: inline-block
+	//			//vertical-align: top
+	//			text-decoration: none
+	//			color: $clr_white
+	//			font-weight: bold
 
-	.footer-info
-		display: flex
-		flex-direction: row
-		flex-wrap: nowrap
-		justify-content: space-between
-		align-items: stretch
-		padding-top: 3%
-		padding-bottom: 2%
-
-		.footer-info__contacts
-			padding-top: 7%
-
-			img
-				margin-right: 10px
-
-			a, span
-				font-size: 1.25em
-				padding-top: 6%
-				display: inline-block
-				//vertical-align: top
-				text-decoration: none
-				color: $clr_white
-				font-weight: bold

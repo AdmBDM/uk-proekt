@@ -2,7 +2,8 @@
 
 /* @var $this yii\web\View */
 
-Yii::$app->name = 'УК Проект';
+//Yii::$app->name = 'УК Проект';
+Yii::$app->name = 'ООО «УК «Проект»';
 $this->title = Yii::$app->name;
 ?>
 <div class="site-index">
