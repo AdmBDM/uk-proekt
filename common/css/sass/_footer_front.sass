@@ -4,7 +4,7 @@ footer
 	background-color: $clr_footer_bck
 
 .footer-info-area
-	height: $height_footer_area
+	min-height: $height_footer_area
 	background-image: url(/images/footer-info.jpg)
 	background-size: cover
 	position: relative
@@ -26,7 +26,7 @@ footer
 
 .footer-area-inner-wrap
 	display: block
-	padding: 100px 0
+	padding: 70px 0
 
 .footer-container
 	width: 100%
@@ -49,6 +49,55 @@ footer
 	min-height: 1px
 	color: $clr_footer_txt
 
+	p, a, span, .span
+		color: $clr_footer_span
+		font-size: 15px
+
+	.footer-col-header
+		display: block
+		color: $clr_footer_head
+		font-size: 16px
+		margin-bottom: 31px
+		font-weight: 400
+		text-transform: uppercase
+		text-align: left
+
+	.footer-contact-info
+		width: 100%
+		display: flex
+		flex-direction: row
+		.span
+			display: block
+			padding-left: 15px
+			padding-right: 10px
+
+	.footer-logo
+		width: 180px
+		margin-bottom: 25px
+
+	.footer-logo-text
+		//font-size: 15px
+		margin-bottom: 1rem
+		line-height: 25px
+		padding-left: 15px
+		padding-right: 20px
+
+	.footer-about-span, .span
+		//font-family: 'Rubik'
+		font-size: 14px
+		margin-bottom: 26px
+
+	ul
+		list-style: outside none none
+		margin: 0
+		padding: 0
+		li
+			line-height: 18px
+			margin-bottom: 13px
+
+	a:hover
+		font-weight: bold
+		text-decoration: none
 
 .footer-copyright
 	margin: 0 20px
@@ -107,4 +156,3 @@ footer > .content
 	//			text-decoration: none
 	//			color: $clr_white
 	//			font-weight: bold
-
