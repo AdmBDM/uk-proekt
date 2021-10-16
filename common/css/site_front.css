@@ -296,4 +296,8 @@ footer > .content {
   padding-left: 15px;
 }
 
+.site-index .slider {
+  max-height: 400px;
+}
+
 /*# sourceMappingURL=site_front.css.map */

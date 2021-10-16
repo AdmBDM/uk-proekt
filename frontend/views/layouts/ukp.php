@@ -28,14 +28,11 @@ AppAsset::register($this);
 <?= $this->render('ukp_header')?>
 
 <main role="main" class="flex-shrink-0">
-    <div class="content">
-		<h2>Новый вариант сайта УК</h2>
-        <?= Breadcrumbs::widget([
-            'links' => $this->params['breadcrumbs'] ?? [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+	<?= Breadcrumbs::widget([
+		'links' => $this->params['breadcrumbs'] ?? [],
+	]) ?>
+	<?= Alert::widget() ?>
+	<?= $content ?>
 </main>
 
 <?= $this->render('ukp_footer')?>

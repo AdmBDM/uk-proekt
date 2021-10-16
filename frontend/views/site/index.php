@@ -3,41 +3,37 @@
 /* @var $this yii\web\View */
 
 //Yii::$app->name = 'УК Проект';
+use yii\bootstrap4\Carousel;
+use yii\helpers\Html;
+
 Yii::$app->name = 'ООО «УК «Проект»';
 $this->title = Yii::$app->name;
+
+//$images[] = Html::a(
+//	Html::img($item->getUrl('x200'), ['alt' => '']),
+//	[$item->getUrl()],
+//	['data-method' => 'post', 'target' => '_blank']
+//);
+
 ?>
 <div class="site-index">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-    </div>
+	<section class="slider">
+		<?php echo Carousel::widget([
+			'items' => [
+				Html::img('/images/slider1.jpg', ['alt' => '']),
+				Html::img('/images/slider2.jpg', ['alt' => ''])
+			],
+			'options' => ['class' => 'carousel slide', 'data-interval' => '5000'],
+			'controls' => [
+				'<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>',
+				'<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+			],
 
-    <div class="body-content">
+		]); ?>
+	</section>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+	<div class="content">
 
-                <p>Повседневная практика показывает, что реализация намеченных плановых заданий позволяет оценить значение дальнейших направлений развития.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Значимость этих проблем настолько очевидна, что постоянный количественный рост и сфера нашей активности играет важную роль в формировании направлений прогрессивного развития.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Идейные соображения высшего порядка, а также постоянное информационно-пропагандистское обеспечение нашей деятельности позволяет выполнять важные задания по разработке модели развития.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+	</div>
 </div>
