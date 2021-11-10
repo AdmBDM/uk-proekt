@@ -7,7 +7,7 @@ use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
@@ -15,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\Response;
 
 /**
  * Site controller
@@ -22,10 +23,10 @@ use frontend\models\ContactForm;
 //class SiteController extends Controller
 class SiteController extends UkpMainController
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
+	/**
+	 * @return array[]
+	 */
+    public function behaviors(): array
     {
         return [
             'access' => [
@@ -53,10 +54,10 @@ class SiteController extends UkpMainController
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function actions()
+	/**
+	 * @return array
+	 */
+    public function actions(): array
     {
         return [
             'error' => [
@@ -72,9 +73,9 @@ class SiteController extends UkpMainController
     /**
      * Displays homepage.
      *
-     * @return mixed
-     */
-    public function actionIndex()
+	 * @return string
+	 */
+    public function actionIndex(): string
     {
         return $this->render('index');
     }
@@ -82,8 +83,8 @@ class SiteController extends UkpMainController
     /**
      * Logs in a user.
      *
-     * @return mixed
-     */
+	 * @return string|Response
+	 */
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -105,9 +106,9 @@ class SiteController extends UkpMainController
     /**
      * Logs out the current user.
      *
-     * @return mixed
-     */
-    public function actionLogout()
+	 * @return Response
+	 */
+    public function actionLogout(): Response
     {
         Yii::$app->user->logout();
 
@@ -117,8 +118,8 @@ class SiteController extends UkpMainController
     /**
      * Displays contact page.
      *
-     * @return mixed
-     */
+	 * @return string|Response
+	 */
     public function actionContact()
     {
         $model = new ContactForm();
@@ -140,9 +141,9 @@ class SiteController extends UkpMainController
     /**
      * Displays about page.
      *
-     * @return mixed
-     */
-    public function actionAbout()
+	 * @return string
+	 */
+    public function actionAbout(): string
     {
         return $this->render('about');
     }
@@ -150,8 +151,8 @@ class SiteController extends UkpMainController
     /**
      * Signs user up.
      *
-     * @return mixed
-     */
+	 * @return string|Response
+	 */
     public function actionSignup()
     {
         $model = new SignupForm();
@@ -168,8 +169,8 @@ class SiteController extends UkpMainController
     /**
      * Requests password reset.
      *
-     * @return mixed
-     */
+	 * @return string|Response
+	 */
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
@@ -191,10 +192,11 @@ class SiteController extends UkpMainController
     /**
      * Resets password.
      *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
+	 * @param $token
+	 *
+	 * @return string|Response
+	 * @throws BadRequestHttpException
+	 */
     public function actionResetPassword($token)
     {
         try {
@@ -218,10 +220,11 @@ class SiteController extends UkpMainController
      * Verify email address
      *
      * @param string $token
+     *
+     * @return Response
      * @throws BadRequestHttpException
-     * @return yii\web\Response
      */
-    public function actionVerifyEmail($token)
+    public function actionVerifyEmail(string $token): Response
     {
         try {
             $model = new VerifyEmailForm($token);
@@ -240,8 +243,8 @@ class SiteController extends UkpMainController
     /**
      * Resend verification email
      *
-     * @return mixed
-     */
+	 * @return string|Response
+	 */
     public function actionResendVerificationEmail()
     {
         $model = new ResendVerificationEmailForm();

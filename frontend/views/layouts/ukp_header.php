@@ -22,7 +22,7 @@ use yii\web\View;
 								<span>main@uk-proekt.ru</span>
 							</div>
 							<div class="info-text-block">
-								<span>эл. почта</span>
+								<span style="font-size: .9em">эл. почта</span>
 							</div>
 						</div>
 						</a>
