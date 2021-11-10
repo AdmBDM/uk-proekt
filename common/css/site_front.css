@@ -444,4 +444,49 @@ footer > .content {
   margin-bottom: 1rem;
 }
 
+.site-info {
+  margin: 0 auto 70px;
+}
+.site-info h2 {
+  color: #303030;
+  font-size: 28px;
+  margin-bottom: 19px;
+  font-weight: 700;
+  text-align: center;
+}
+.site-info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.site-info table caption {
+  color: #303030;
+  caption-side: top;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 19px;
+  font-weight: 700;
+}
+.site-info table tr {
+  border-bottom: 1px solid lightgrey;
+}
+.site-info table thead tr {
+  border-top: 1px solid lightgrey;
+  border-bottom: 3px solid lightgrey;
+}
+.site-info table th {
+  text-align: center;
+}
+.site-info table .table-col1 {
+  width: 300px;
+}
+.site-info table .table-col2 {
+  width: 540px;
+}
+.site-info table .table-col3 {
+  width: 180px;
+}
+.site-info table .table-col4 {
+  width: 180px;
+}
+
 /*# sourceMappingURL=site_front.css.map */

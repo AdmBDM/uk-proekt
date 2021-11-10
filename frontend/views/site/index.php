@@ -36,6 +36,8 @@ $this->title = Yii::$app->name;
 
 	<?= $this->render('about')?>
 
+	<?= $this->render('info')?>
+
 	<div class="content">
 
 
