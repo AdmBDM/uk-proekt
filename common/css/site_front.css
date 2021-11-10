@@ -355,5 +355,93 @@ footer > .content {
   text-decoration: none;
   padding: 5px 30px;
 }
+.site-index .owl-dots {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  top: 90%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+}
+
+.site-about {
+  margin: 70px auto;
+}
+.site-about #site-about {
+  display: flex;
+  width: 100%;
+  min-height: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.site-about #site-about .block-img {
+  display: inline-flex;
+}
+.site-about #site-about .block-img img {
+  width: 100%;
+}
+.site-about #site-about .block-info {
+  padding: 10px;
+  display: block;
+}
+.site-about #site-about .block-info .info-head {
+  display: inline-block;
+  width: 100%;
+  padding: 0 20px 20px;
+  color: #303030;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.site-about #site-about .block-info .info-items {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.site-about #site-about .block-info .info-items .info-item {
+  display: flex;
+  width: 50%;
+  flex-wrap: nowrap;
+}
+.site-about #site-about .block-info .info-items .info-item .service-img {
+  margin: 0;
+  padding: 0;
+  min-width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.site-about #site-about .block-info .info-items .info-item .service-img .service-img-round {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #cccccc;
+}
+.site-about #site-about .block-info .info-items .info-item .service-img img {
+  text-align: center;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.site-about #site-about .block-info .info-items .info-item .service-txt {
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+.site-about #site-about .block-info .info-items .info-item .service-txt .service-header {
+  display: block;
+  color: #008966;
+  margin-bottom: 12px;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 1.5rem;
+}
+.site-about #site-about .block-info .info-items .info-item .service-txt .service-text {
+  font-size: 16px;
+  color: #606060;
+  margin-bottom: 1rem;
+}
 
 /*# sourceMappingURL=site_front.css.map */
