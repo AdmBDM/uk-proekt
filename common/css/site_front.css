@@ -473,20 +473,40 @@ footer > .content {
   border-top: 1px solid lightgrey;
   border-bottom: 3px solid lightgrey;
 }
+.site-info table .table-col1 {
+  width: 25%;
+}
+.site-info table .table-col2 {
+  width: 45%;
+}
+.site-info table .table-col3 {
+  width: 15%;
+}
+.site-info table .table-col4 {
+  width: 15%;
+}
 .site-info table th {
   text-align: center;
 }
-.site-info table .table-col1 {
-  width: 300px;
+.site-info table th:nth-child(3), .site-info table th:nth-child(4) {
+  padding: 15px;
+  font-weight: bolder;
 }
-.site-info table .table-col2 {
-  width: 540px;
+.site-info table td {
+  font-size: 14px;
+  padding: 15px 10px;
 }
-.site-info table .table-col3 {
-  width: 180px;
+.site-info table td a {
+  font-size: 14px;
+  color: #008966;
+  text-decoration: none;
 }
-.site-info table .table-col4 {
-  width: 180px;
+.site-info table td:first-child {
+  font-weight: bolder;
+}
+.site-info table td:nth-child(3), .site-info table td:nth-child(4) {
+  text-align: center;
+  text-justify: distribute-center-last;
 }
 
 /*# sourceMappingURL=site_front.css.map */

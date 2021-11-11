@@ -73,6 +73,7 @@
 		display: flex
 		justify-content: center
 
+
 .site-about
 	margin: 70px auto
 
@@ -152,6 +153,7 @@
 							color: #606060
 							margin-bottom: 1rem
 
+
 .site-info
 	margin: 0 auto 70px
 
@@ -180,17 +182,38 @@
 		thead tr
 			border-top: 1px solid lightgrey
 			border-bottom: 3px solid lightgrey
+
+		.table-col1
+			width: 25%
+
+		.table-col2
+			width: 45%
+
+		.table-col3
+			width: 15%
+
+		.table-col4
+			width: 15%
+
 		th
 			text-align: center
 
-		.table-col1
-			width: 300px
+		th:nth-child(3), th:nth-child(4)
+			padding: 15px
+			font-weight: bolder
 
-		.table-col2
-			width: 540px
+		td
+			font-size: 14px
+			padding: 15px 10px
 
-		.table-col3
-			width: 180px
+			a
+				font-size: 14px
+				color: $btn_clr
+				text-decoration: none
 
-		.table-col4
-			width: 180px
+		td:first-child
+			font-weight: bolder
+
+		td:nth-child(3), td:nth-child(4)
+			text-align: center
+			text-justify: distribute-center-last
