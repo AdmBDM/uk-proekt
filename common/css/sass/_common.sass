@@ -7,6 +7,7 @@
 	color: #212529
 	text-align: left
 
+
 .site-index
 	width: 100%
 
@@ -40,3 +41,42 @@
 	background-color: $btn_hover_clr
 	text-decoration: none
 	color: $btn_hover_fnt
+
+
+table
+	width: 100%
+	border-collapse: collapse
+
+	caption
+		color: $clr_about_black
+		caption-side: top
+		text-align: center
+		font-size: 28px
+		margin-bottom: 10px
+		font-weight: 700
+
+	tr
+		border-bottom: 1px solid lightgrey
+
+	th
+		text-align: center
+
+	th:nth-last-child(2), th:nth-last-child(1)
+		padding: 15px
+		font-weight: bolder
+
+	td
+		font-size: 14px
+		padding: 15px 10px
+
+		a
+			font-size: 14px
+			color: $clr_tab_link
+
+		a:hover
+			text-decoration: none
+
+
+	td:nth-last-child(2), td:nth-last-child(1)
+		text-align: center
+		text-justify: distribute-center-last

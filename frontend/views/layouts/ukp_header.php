@@ -49,19 +49,23 @@ use yii\web\View;
 					<ul class="header-nav-menu-list">
 						<li class="header-nav-menu-item">
 <!--							<a href="/index.php#about">О компании</a>-->
-							<a href="#">О компании</a>
+<!--							<a href="#site-about">О компании</a>-->
+							<span id="btn-menu-main">О компании</span>
 						</li>
 						<li class="header-nav-menu-item">
 <!--							<a href="https://uk-proekt.ru/raskrytie-informatsii/" aria-current="page">Раскрытие информации</a>-->
-							<a href="#" aria-current="page">Раскрытие информации</a>
+<!--							<a href="#" aria-current="page">Раскрытие информации</a>-->
+							<span id="btn-menu-open_data">Раскрытие информации</span>
 						</li>
 						<li class="header-nav-menu-item">
 <!--							<a href="https://uk-proekt.ru/news/">Новости</a>-->
-							<a href="#">Новости</a>
+<!--							<a href="#">Новости</a>-->
+							<span id="btn-menu-news">Новости</span>
 						</li>
 						<li class="header-nav-menu-item">
 <!--							<a href="https://uk-proekt.ru/contacts/">Контакты</a>-->
-							<a href="#">Контакты</a>
+<!--							<a href="#">Контакты</a>-->
+							<span id="btn-menu-contact">Контакты</span>
 						</li>
 					</ul>
 				</div>

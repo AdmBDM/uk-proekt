@@ -41,6 +41,44 @@
   color: yellow;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table caption {
+  color: #303030;
+  caption-side: top;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+table tr {
+  border-bottom: 1px solid lightgrey;
+}
+table th {
+  text-align: center;
+}
+table th:nth-last-child(2), table th:nth-last-child(1) {
+  padding: 15px;
+  font-weight: bolder;
+}
+table td {
+  font-size: 14px;
+  padding: 15px 10px;
+}
+table td a {
+  font-size: 14px;
+  color: #007bff;
+}
+table td a:hover {
+  text-decoration: none;
+}
+table td:nth-last-child(2), table td:nth-last-child(1) {
+  text-align: center;
+  text-justify: distribute-center-last;
+}
+
 .block-row {
   width: 100%;
   height: 115px;
@@ -149,16 +187,25 @@
   display: flex;
   flex-direction: column;
 }
-.header-nav-menu-item a {
+.header-nav-menu-item a,
+.header-nav-menu-item #btn-menu-main,
+.header-nav-menu-item #btn-menu-open_data,
+.header-nav-menu-item #btn-menu-news,
+.header-nav-menu-item #btn-menu-contact {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
   padding: 20px;
   color: #002e5b;
 }
-.header-nav-menu-item a:hover {
+.header-nav-menu-item a:hover,
+.header-nav-menu-item #btn-menu-main:hover,
+.header-nav-menu-item #btn-menu-open_data:hover,
+.header-nav-menu-item #btn-menu-news:hover,
+.header-nav-menu-item #btn-menu-contact:hover {
   color: #008966;
   text-decoration: none;
+  cursor: pointer;
 }
 
 footer {
@@ -366,7 +413,7 @@ footer > .content {
 }
 
 .site-about {
-  margin: 70px auto;
+  margin: 70px auto 30px;
 }
 .site-about #site-about {
   display: flex;
@@ -428,7 +475,7 @@ footer > .content {
 }
 .site-about #site-about .block-info .info-items .info-item .service-txt {
   padding-left: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .site-about #site-about .block-info .info-items .info-item .service-txt .service-header {
   display: block;
@@ -454,21 +501,6 @@ footer > .content {
   font-weight: 700;
   text-align: center;
 }
-.site-info table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.site-info table caption {
-  color: #303030;
-  caption-side: top;
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 19px;
-  font-weight: 700;
-}
-.site-info table tr {
-  border-bottom: 1px solid lightgrey;
-}
 .site-info table thead tr {
   border-top: 1px solid lightgrey;
   border-bottom: 3px solid lightgrey;
@@ -485,28 +517,70 @@ footer > .content {
 .site-info table .table-col4 {
   width: 15%;
 }
-.site-info table th {
-  text-align: center;
-}
-.site-info table th:nth-child(3), .site-info table th:nth-child(4) {
-  padding: 15px;
-  font-weight: bolder;
-}
-.site-info table td {
-  font-size: 14px;
-  padding: 15px 10px;
-}
-.site-info table td a {
-  font-size: 14px;
-  color: #008966;
-  text-decoration: none;
-}
 .site-info table td:first-child {
   font-weight: bolder;
 }
-.site-info table td:nth-child(3), .site-info table td:nth-child(4) {
+
+.site-license {
+  margin: 10px auto 70px;
+}
+.site-license h2 {
+  color: #303030;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
   text-align: center;
-  text-justify: distribute-center-last;
+}
+.site-license p {
+  margin: 10px auto 17px;
+  padding: 0 50px;
+  text-align: center;
+}
+.site-license .images-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.site-license .images-block .images-item {
+  display: inline-flex;
+}
+.site-license .images-block .images-item img {
+  width: 100%;
+}
+
+.site-open_data {
+  margin-top: 60px;
+}
+.site-open_data-logo-img img {
+  width: 100%;
+}
+.site-open_data-logo-block {
+  display: block;
+  background-color: #f5f7f9;
+  z-index: 9;
+  width: 35%;
+  height: 17%;
+  box-shadow: -3px 0px 7px rgba(3, 3, 3, 0.44);
+}
+.site-open_data .table-data {
+  margin: 30px auto 50px;
+}
+.site-open_data table caption {
+  color: #008966;
+  text-align: left;
+}
+.site-open_data table .table-col1 {
+  width: 70%;
+}
+.site-open_data table .table-col2 {
+  width: 15%;
+}
+.site-open_data table .table-col3 {
+  width: 15%;
+}
+.site-open_data table th:first-child {
+  font-weight: bolder;
+  text-align: left;
 }
 
 /*# sourceMappingURL=site_front.css.map */

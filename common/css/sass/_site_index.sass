@@ -75,7 +75,7 @@
 
 
 .site-about
-	margin: 70px auto
+	margin: 70px auto 30px
 
 	#site-about
 		display: flex
@@ -138,7 +138,7 @@
 					.service-txt
 						//background-color: lightgreen
 						padding-left: 15px
-						margin-bottom: 20px
+						margin-bottom: 10px
 
 						.service-header
 							display: block
@@ -165,20 +165,6 @@
 		text-align: center
 
 	table
-		width: 100%
-		border-collapse: collapse
-
-		caption
-			color: $clr_about_black
-			caption-side: top
-			text-align: center
-			//padding: 10px 0
-			font-size: 28px
-			margin-bottom: 19px
-			font-weight: 700
-
-		tr
-			border-bottom: 1px solid lightgrey
 		thead tr
 			border-top: 1px solid lightgrey
 			border-bottom: 3px solid lightgrey
@@ -195,25 +181,76 @@
 		.table-col4
 			width: 15%
 
-		th
-			text-align: center
-
-		th:nth-child(3), th:nth-child(4)
-			padding: 15px
-			font-weight: bolder
-
-		td
-			font-size: 14px
-			padding: 15px 10px
-
-			a
-				font-size: 14px
-				color: $btn_clr
-				text-decoration: none
-
 		td:first-child
 			font-weight: bolder
 
-		td:nth-child(3), td:nth-child(4)
-			text-align: center
-			text-justify: distribute-center-last
+
+.site-license
+	margin: 10px auto 70px
+
+	h2
+		color: $clr_about_black
+		font-size: 28px
+		font-weight: bold
+		margin-bottom: 20px
+		text-align: center
+
+	p
+		margin: 10px auto 17px
+		padding: 0 50px
+		text-align: center
+
+	.images-block
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-start
+
+		.images-item
+			display: inline-flex
+
+			img
+				width: 100%
+
+
+.site-open_data
+	margin-top: $height_header_nav
+
+	&-logo
+		&-img
+			img
+				width: 100%
+
+		&-block
+			display: block
+			background-color: #f5f7f9
+			//float: right
+			//margin-left: -241px
+			//margin-top: 19px
+			//overflow: hidden
+			//position: relative
+			z-index: 9
+			width: 35%
+			height: 17%
+			//background-position: 0 0
+			box-shadow: -3px 0px 7px rgb(3 3 3 / 44%)
+
+	.table-data
+		margin: 30px auto 50px
+
+	table
+		caption
+			color: $btn_clr
+			text-align: left
+
+		.table-col1
+			width: 70%
+
+		.table-col2
+			width: 15%
+
+		.table-col3
+			width: 15%
+
+		th:first-child
+			font-weight: bolder
+			text-align: left
