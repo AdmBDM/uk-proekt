@@ -8,6 +8,49 @@ use yii\web\View;
 
 ?>
 <!--<footer class="footer mt-auto py-3 text-muted">-->
+<footer>
+	<div class="content">
+		<div class="footer-items">
+			<div class="footer-item">
+				<div class="footer-item-block">
+					<div class="footer-item-text">
+						<div class="footer-text-row">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-item">
+				<div class="footer-item-block">
+					<div class="footer-item-text">
+						<div class="footer-text-header">Об организации</div>
+						<div class="footer-text-row">ИНН/КПП<br>1655449328 / 165501001</div>
+						<div class="footer-text-row">ОГРН<br>1201600087150</div>
+						<div class="footer-text-row">Лицензия №&nbsp;21-000-1-01049<br>выдана Банком России 27.07.2021&nbsp;г. (лицензия бессрочная)</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-item">
+				<div class="footer-item-block">
+					<div class="footer-item-text">
+						<div class="footer-text-header">Адреса и контакты</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-item">
+				<div class="footer-item-block">
+					<div class="footer-item-text">
+						<div class="footer-text-header">Карта сайта</div>
+						<div class="footer-text-row">О компании</div>
+						<div class="footer-text-row">Раскрытие информации</div>
+						<div class="footer-text-row">Новости</div>
+						<div class="footer-text-row">Контакты</div>
+						<div class="footer-text-row">Обратная связь</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
 <footer class="footer mt-auto">
 	<div class="footer-info-area">
 		<div class="content">
