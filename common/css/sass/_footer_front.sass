@@ -1,7 +1,64 @@
 footer
 	position: relative
 	width: 100%
+	//background-color: $clr_footer_bck
+
+	.footer-info
+		width: 100%
+		margin: 0 auto $height_header_nav
+
+	.footer-items
+		display: flex
+		width: 100%
+		flex-direction: row
+		align-items: stretch
+		justify-content: center
+		flex-wrap: wrap
+
+		.footer-item
+			width: 25%
+
+			min-height: 20px
+			background-color: yellow
+			border: 1px solid blue
+
+			.footer-item-block
+				padding-left: 20px
+				padding-right: 30px
+
+				.footer-item-img
+					display: block
+					width: 25px
+					float: left
+					margin-right: 10px
+
+					img
+						width: 100%
+						vertical-align: middle
+						border-style: none
+
+				.footer-item-text
+					float: left
+					display: block
+
+					.footer-text-header
+						font-size: 16px
+						font-weight: 400
+						text-transform: uppercase
+						text-align: left
+
+					.footer-text-row
+						font-size: 12px
+
+
+.footer-copyright
+	margin: 0 20px
+	height: $height_footer
 	background-color: $clr_footer_bck
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
 
 .footer-info-area
 	min-height: $height_footer_area
@@ -99,14 +156,6 @@ footer
 		font-weight: bold
 		text-decoration: none
 
-.footer-copyright
-	margin: 0 20px
-	height: $height_footer
-	background-color: $clr_footer_bck
-	display: flex
-	flex-direction: column
-	align-items: center
-	justify-content: center
 
 	span
 		font-size: 13px
