@@ -20,7 +20,7 @@
 				<div id="div_block-5-10" class="ct-div-block col-lg-12">
 					<div id="div_block-6-10" class="ct-div-block project-details-item">
 						<div id="div_block-7-10" class="ct-div-block project-details-left"><img id="image-8-10" alt=""
-																								src="/wp-content/uploads/2021/08/53.jpg"
+																								src="/images/53.jpg"
 																								class="ct-image"></div>
 						<div id="div_block-9-10" class="ct-div-block project-details-right">
 							<div id="div_block-11-10" class="ct-div-block project-right-text"><h2 id="headline-12-10"

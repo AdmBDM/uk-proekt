@@ -1,5 +1,5 @@
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: Rubik, Roboto, "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: #212529;
@@ -581,6 +581,45 @@ footer > .content {
 .site-open_data table th:first-child {
   font-weight: bolder;
   text-align: left;
+}
+
+.site-news {
+  margin-bottom: 60px;
+}
+.site-news .logo-news {
+  margin: 0;
+  width: 100%;
+}
+.site-news .content h2 {
+  display: block;
+  margin-top: 60px;
+  text-align: center;
+  color: #008966;
+}
+.site-news .news-year .news-year-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.site-news .news-year .news-year-content .year-val {
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.site-news .news-year .news-year-content .news-content {
+  margin-left: 15px;
+}
+.site-news .news-year .news-year-content .news-content .news-item-caption {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+.site-news .news-year .news-year-content .news-content .news-item-date {
+  font-weight: bolder;
+}
+.site-news .news-year .news-year-content .news-content .news-item-anons {
+  font-weight: bolder;
+}
+.site-news .news-year .news-year-content .news-content .news-item-text {
+  margin-left: 15px;
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=site_front.css.map */
