@@ -1,26 +1,34 @@
 footer
 	position: relative
 	width: 100%
-	//background-color: $clr_footer_bck
+	background-color: $clr_footer_bck
+	background-image: url(/images/footer-info.jpg)
+	background-size: cover
+	background-repeat: no-repeat
+	background-attachment: scroll
 
 	.footer-info
 		width: 100%
 		margin: 0 auto $height_header_nav
 
 	.footer-items
+		position: relative
 		display: flex
 		width: 100%
 		flex-direction: row
 		align-items: stretch
 		justify-content: center
 		flex-wrap: wrap
+		//margin-bottom: 30px
+		padding: $height_header_nav 0
 
 		.footer-item
 			width: 25%
 
 			min-height: 20px
-			background-color: yellow
-			border: 1px solid blue
+			//background-color: yellow
+			//background-color: $clr_footer_bck
+			//border: 1px solid blue
 
 			.footer-item-block
 				padding-left: 20px
@@ -42,37 +50,57 @@ footer
 					display: block
 
 					.footer-text-header
-						font-size: 16px
+						//font-size: 16px
 						font-weight: 400
 						text-transform: uppercase
 						text-align: left
+						font-size: $footer_font_head
+						padding-top: 15px
+						color: $clr_white
 
-					.footer-text-row
-						font-size: 12px
+					.footer-text-row-block
+						padding-top: 10px
+
+						.row-block-img
+							display: block
+							width: 25px
+							float: left
+							margin-right: 10px
+
+							img
+								width: 100%
+								filter: brightness(150%)
+
+						.row-block-txt
+							display: flex
+							font-size: $footer_font_row
+							color: $clr_white
+
+			.footer-logo
+				max-width: 180px
+				margin-bottom: 15px
 
 
 .footer-copyright
+	position: relative
 	margin: 0 20px
 	height: $height_footer
-	background-color: $clr_footer_bck
+	//background-color: $clr_footer_bck
+	//background-color: $clr_footer_span
 	display: flex
 	flex-direction: column
 	align-items: center
 	justify-content: center
 
-.footer-info-area
-	min-height: $height_footer_area
-	background-image: url(/images/footer-info.jpg)
-	background-size: cover
-	position: relative
-	background-repeat: no-repeat
-	background-attachment: scroll
+	span, a
+		color: $clr_white
 
-.footer-info-area:before
+
+footer:before
 	background-size: cover
 	background-color: $clr_120_op95
-	background-repeat: repeat
-	background-attachment: scroll
+	//background-repeat: repeat
+	//background-attachment: scroll
 	height: 100%
 	width: 100%
 	z-index: 0
@@ -81,127 +109,21 @@ footer
 	left: 0
 	content: ""
 
-.footer-area-inner-wrap
-	display: block
-	padding: 70px 0
+//#btn-menu-f-main,
+//#btn-menu-f-open_data,
+//#btn-menu-f-news,
+//#btn-menu-f-contact
+	//text-transform: uppercase
+	//font-size: 14px
+	//font-weight: bold
+	//padding: 20px
+	//color: #002e5b
 
-.footer-container
-	width: 100%
-	max-width: 1200px
-	padding-left: 15px
-	padding-right: 15px
-	margin-left: auto
-	margin-right: auto
-
-.footer-area-row
-	margin-left: -15px
-	margin-right: -15px
-	width: 100%
-
-.footer-area-col
-	position: relative
-	width: 25%
-	padding-left: 15px
-	padding-right: 15px
-	min-height: 1px
-	color: $clr_footer_txt
-
-	p, a, span, .span
-		color: $clr_footer_span
-		font-size: 15px
-
-	.footer-col-header
-		display: block
-		color: $clr_footer_head
-		font-size: 16px
-		margin-bottom: 31px
-		font-weight: 400
-		text-transform: uppercase
-		text-align: left
-
-	.footer-contact-info
-		width: 100%
-		display: flex
-		flex-direction: row
-		.span
-			display: block
-			padding-left: 15px
-			padding-right: 10px
-
-	.footer-logo
-		width: 180px
-		margin-bottom: 25px
-
-	.footer-logo-text
-		//font-size: 15px
-		margin-bottom: 1rem
-		line-height: 25px
-		padding-left: 15px
-		padding-right: 20px
-
-	.footer-about-span, .span
-		//font-family: 'Rubik'
-		font-size: 14px
-		margin-bottom: 26px
-
-	ul
-		list-style: outside none none
-		margin: 0
-		padding: 0
-		li
-			line-height: 18px
-			margin-bottom: 13px
-
-	a:hover
-		font-weight: bold
-		text-decoration: none
-
-
-	span
-		font-size: 13px
-		color: $clr_footer_txt
-
-		a
-			color: $clr_footer_txt
-
-		a:hover
-			font-weight: bold
-			font-style: italic
-			text-decoration: none
-
-footer > .content
-	padding-right: 15px
-	padding-left: 15px
-
-	//.footer-title
-	//	position: absolute
-	//	top: 25%
-	//	left: 40%
-	//	h3
-	//		color: $clr_white
-	//		font-weight: bold
-	//		text-transform: uppercase
-	//
-	//.footer-info
-	//	display: flex
-	//	flex-direction: row
-	//	flex-wrap: nowrap
-	//	justify-content: space-between
-	//	align-items: stretch
-	//	padding-top: 3%
-	//	padding-bottom: 2%
-	//
-	//	.footer-info__contacts
-	//		padding-top: 7%
-	//
-	//		img
-	//			margin-right: 10px
-	//
-	//		a, span
-	//			font-size: 1.25em
-	//			padding-top: 6%
-	//			display: inline-block
-	//			//vertical-align: top
-	//			text-decoration: none
-	//			color: $clr_white
-	//			font-weight: bold
+#btn-menu-f-main:hover,
+#btn-menu-f-open_data:hover,
+#btn-menu-f-news:hover,
+#btn-menu-f-contact:hover
+	text-transform: uppercase
+	color: $btn_hover_fnt
+	text-decoration: none
+	cursor: pointer

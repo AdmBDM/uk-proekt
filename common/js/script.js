@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	let $url = '#';
 	let $sc_main = $('#section-main');
 	let $sc_about = $('#section-about');
 	let $sc_info = $('#section-info');
@@ -41,24 +42,34 @@ $(document).ready(function() {
 		$sc_news.hide();
 		$sc_contact.hide();
 
-		if ($(this).attr('id') === 'btn-menu-main') {
+		if ($(this).attr('id') === 'btn-menu-main' || $(this).attr('id') === 'btn-menu-f-main') {
 			$sc_main.show();
 			$sc_about.show();
 			$sc_info.show();
 			$sc_license.show();
+			window.location.href = '/#section-about';
 		}
 
-		if ($(this).attr('id') === 'btn-menu-open_data') {
+		// if ($(this).attr('id') === 'btn-menu-main' || $(this).attr('id') === 'btn-menu-f-main') {
+		// 	$sc_main.show();
+		// 	$sc_about.show();
+		// 	$sc_info.show();
+		// 	$sc_license.show();
+		// }
+
+		if ($(this).attr('id') === 'btn-menu-open_data' || $(this).attr('id') === 'btn-menu-f-open_data') {
 			$sc_open_data.show();
+			window.location.href = '#';
 		}
 
-		if ($(this).attr('id') === 'btn-menu-news') {
+		if ($(this).attr('id') === 'btn-menu-news' || $(this).attr('id') === 'btn-menu-f-news') {
 			$sc_news.show();
+			window.location.href = '#';
 		}
 
-		if ($(this).attr('id') === 'btn-menu-contact') {
+		if ($(this).attr('id') === 'btn-menu-contact' || $(this).attr('id') === 'btn-menu-f-contact') {
 			$sc_contact.show();
+			window.location.href = '#';
 		}
-
 	});
 });
