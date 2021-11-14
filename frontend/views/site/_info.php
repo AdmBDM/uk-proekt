@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
 <div class="site-info" id="section-info">
 	<div class="content">
-		<table>
+		<table class="table">
 			<caption>Основные сведения</caption>
 			<thead>
 			<tr>

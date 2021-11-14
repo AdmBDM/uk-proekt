@@ -77,81 +77,84 @@
 .site-about
 	margin: 70px auto 30px
 
-	#site-about
+	.about-block
+		position: relative
 		display: flex
 		width: 100%
-		min-height: 10px
+		flex-direction: row
+		justify-content: center
+		align-items: stretch
 		flex-wrap: wrap
-		align-items: flex-start
 
-		.block-img
-			display: inline-flex
+		.about-block-item
+			width: 50%
 
-			img
+			.about-img > img
 				width: 100%
 
-		.block-info
-			padding: 10px
-			display: block
-
-			.info-head
-				display: inline-block
-				width: 100%
-				padding: 0 20px 20px
-				color: $clr_about_black
-				font-weight: 600
-				font-size: 2.5rem
-				line-height: 1.2
-				text-align: center
-
-			.info-items
+			.about-text-items
+				position: relative
 				display: flex
 				width: 100%
+				flex-direction: row
+				align-items: stretch
+				justify-content: center
 				flex-wrap: wrap
-				align-items: flex-start
 
-				.info-item
-					display: flex
+				.about-text-header
+					display: inline-block
+					width: 100%
+					padding: 0 20px 20px
+					color: $clr_about_black
+					font-weight: 600
+					font-size: 2.5rem
+					line-height: 1.2
+					text-align: center
+
+				.about-text-item
 					width: 50%
-					flex-wrap: nowrap
+					padding: 0 20px
 
-					.service-img
-						margin: 0
-						padding: 0
-						min-width: $icon_radius
-						height: $icon_radius
+					.info-item
 						display: flex
-						flex-direction: column
-						align-items: flex-start
+						flex-wrap: nowrap
 
-						.service-img-round
-							width: 100%
-							height: 100%
-							border-radius: 50%
-							border: 1px solid $clr_icon_border
+						.service-img
+							margin: 0
+							padding: 0
+							min-width: $icon_radius
+							height: $icon_radius
+							display: flex
+							flex-direction: column
+							align-items: flex-start
 
-					.service-img img
-						text-align: center
-						margin-left: 10px
-						margin-top: 10px
+							.service-img-round
+								width: 100%
+								height: 100%
+								border-radius: 50%
+								border: 1px solid $clr_icon_border
 
-					.service-txt
-						//background-color: lightgreen
-						padding-left: 15px
-						margin-bottom: 10px
+						.service-img img
+							text-align: center
+							margin-left: 10px
+							margin-top: 10px
 
-						.service-header
-							display: block
-							color: $btn_clr
-							margin-bottom: 12px
-							font-weight: 400
-							line-height: 1
-							font-size: 1.5rem
+						.service-txt
+							padding-left: 15px
+							margin-bottom: 10px
 
-						.service-text
-							font-size: 16px
-							color: #606060
-							margin-bottom: 1rem
+							.service-header
+								display: block
+								color: $btn_clr
+								margin-bottom: 12px
+								font-weight: 400
+								line-height: 1
+								font-size: 1.5rem
+
+							.service-text
+								font-size: 16px
+								color: #606060
+								margin-bottom: 1rem
 
 
 .site-info
