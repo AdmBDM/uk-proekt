@@ -28,7 +28,7 @@ $(document).ready(function() {
 		loop: true,
 		nav: false,
 		dots: true,
-		autoplay: true,
+		// autoplay: true,
 		autoplayTimeout: 7000,
 		smartSpeed: 500,
 	});

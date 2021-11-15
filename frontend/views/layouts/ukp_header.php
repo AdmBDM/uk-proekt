@@ -13,7 +13,7 @@ use yii\web\View;
 	<div class="block-row">
 		<div class="block-div block-div-info">
 			<div class="block-some-columns">
-				<div class="block-div block-single-column">
+				<div class="block-div block-single-column" id="head-block-email">
 					<div class="block-div content">
 						<img src="/images/message.png" alt="">
 						<a href="mailto:main@uk-proekt.ru">
@@ -28,12 +28,12 @@ use yii\web\View;
 						</a>
 					</div>
 				</div>
-				<div class="block-div block-single-column">
+				<div class="block-div block-single-column" id="head-block-logo">
 					<div class="block-div content">
 						<a href="/index.php"><img src="/images/logo.svg" alt="" class="logo"></a>
 					</div>
 				</div>
-				<div class="block-div block-single-column">
+				<div class="block-div block-single-column" id="head-block-btn">
 					<div class="block-div content">
 						<a class="btn-main" href="#">Обратная связь</a>
 					</div>
