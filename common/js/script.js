@@ -17,6 +17,7 @@ $(document).ready(function() {
 	$sc_news.hide();
 	$sc_contact.hide();
 
+	//организация "карусели" на главной странице
 	// Owl Carousel
 	let main_slider = $("#main-slider");
 	main_slider.owlCarousel({
@@ -32,7 +33,7 @@ $(document).ready(function() {
 		smartSpeed: 500,
 	});
 
-	//включение выключение блоков согласно нажатой кнопке меню
+	//включение-выключение блоков согласно нажатой кнопке меню
 	$("[id*='btn-menu-']").click(function() {
 		$sc_main.hide();
 		$sc_about.hide();
@@ -41,13 +42,15 @@ $(document).ready(function() {
 		$sc_open_data.hide();
 		$sc_news.hide();
 		$sc_contact.hide();
+		$url = '#';
 
 		if ($(this).attr('id') === 'btn-menu-main' || $(this).attr('id') === 'btn-menu-f-main') {
 			$sc_main.show();
 			$sc_about.show();
 			$sc_info.show();
 			$sc_license.show();
-			window.location.href = '/#section-about';
+			// window.location.href = '/#section-about';
+			$url = '/#section-about';
 		}
 
 		// if ($(this).attr('id') === 'btn-menu-main' || $(this).attr('id') === 'btn-menu-f-main') {
@@ -59,17 +62,29 @@ $(document).ready(function() {
 
 		if ($(this).attr('id') === 'btn-menu-open_data' || $(this).attr('id') === 'btn-menu-f-open_data') {
 			$sc_open_data.show();
-			window.location.href = '#';
+			// window.location.href = $url;
 		}
 
 		if ($(this).attr('id') === 'btn-menu-news' || $(this).attr('id') === 'btn-menu-f-news') {
 			$sc_news.show();
-			window.location.href = '#';
+			// window.location.href = '#';
 		}
 
 		if ($(this).attr('id') === 'btn-menu-contact' || $(this).attr('id') === 'btn-menu-f-contact') {
 			$sc_contact.show();
-			window.location.href = '#';
+			// window.location.href = '#';
+		}
+
+		window.location.href = $url;
+	});
+
+	//фиксация верхнего меню при прокрутке
+	$(window).scroll(function () {
+		if($(this).scrollTop() > 170){
+			$('.header-nav').addClass('fixed');
+		}
+		else if ($(this).scrollTop() < 170){
+			$('.header-nav').removeClass('fixed');
 		}
 	});
 });
