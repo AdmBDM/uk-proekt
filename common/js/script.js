@@ -33,6 +33,13 @@ $(document).ready(function() {
 		smartSpeed: 500,
 	});
 
+	$("[href*='/#btn-menu']").each(function () {
+		let $newEl = $("<div class='" + $(this).attr('class') +
+			"' id='" + $(this).attr('href').substr(2, 100) + "'>" +
+			$(this).html() + "</div>");
+		$(this).replaceWith($newEl);
+	});
+
 	//включение-выключение блоков согласно нажатой кнопке меню
 	$("[id*='btn-menu-']").click(function() {
 		$sc_main.hide();
@@ -81,10 +88,12 @@ $(document).ready(function() {
 	//фиксация верхнего меню при прокрутке
 	$(window).scroll(function () {
 		if($(this).scrollTop() > 170){
-			$('.header-nav').addClass('fixed');
+			// $('.header-nav').addClass('fixed');
+			$('#ukp-nav').addClass('fixed');
 		}
 		else if ($(this).scrollTop() < 170){
-			$('.header-nav').removeClass('fixed');
+			// $('.header-nav').removeClass('fixed');
+			$('#ukp-nav').removeClass('fixed');
 		}
 	});
 });

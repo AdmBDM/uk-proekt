@@ -150,72 +150,53 @@ table td:nth-last-child(2), table td:nth-last-child(1) {
   text-decoration: inherit;
 }
 
-.header-nav {
-  background-color: rgba(237, 237, 235, 0.95);
-  height: 60px;
-  z-index: 999;
-}
-
-.header-nav.fixed {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.header-nav .content {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.header-nav-menu {
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-}
-
-.header-nav-menu-center {
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-}
-
-.header-nav-menu-list {
-  flex-direction: row;
-  display: flex;
-  padding: 0;
-  margin: 0;
-  list-style: outside none none;
-}
-
-.header-nav-menu-item {
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-}
-.header-nav-menu-item a,
-.header-nav-menu-item #btn-menu-main,
-.header-nav-menu-item #btn-menu-open_data,
-.header-nav-menu-item #btn-menu-news,
-.header-nav-menu-item #btn-menu-contact {
+#btn-menu-main,
+#btn-menu-open_data,
+#btn-menu-news,
+#btn-menu-contact {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
   padding: 20px;
   color: #002e5b;
 }
-.header-nav-menu-item a:hover,
-.header-nav-menu-item #btn-menu-main:hover,
-.header-nav-menu-item #btn-menu-open_data:hover,
-.header-nav-menu-item #btn-menu-news:hover,
-.header-nav-menu-item #btn-menu-contact:hover {
+
+#btn-menu-main:hover,
+#btn-menu-open_data:hover,
+#btn-menu-news:hover,
+#btn-menu-contact:hover {
   color: #008966;
   text-decoration: none;
   cursor: pointer;
+}
+
+#ukp-nav {
+  height: 60px;
+  z-index: 999;
+}
+#ukp-nav ul {
+  margin: 0 auto;
+}
+#ukp-nav li {
+  margin: 0 15px;
+}
+#ukp-nav li a {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 20px;
+  color: #002e5b;
+}
+#ukp-nav li a:hover {
+  color: #008966;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#ukp-nav.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 footer {
