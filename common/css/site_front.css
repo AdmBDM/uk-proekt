@@ -192,6 +192,9 @@ table td:nth-last-child(2), table td:nth-last-child(1) {
   text-decoration: none;
   cursor: pointer;
 }
+#ukp-nav .navbar-collapse.show {
+  background-color: rgba(237, 237, 235, 0.95);
+}
 
 #ukp-nav.fixed {
   position: fixed;
