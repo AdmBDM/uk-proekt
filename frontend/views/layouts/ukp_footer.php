@@ -87,7 +87,7 @@ use yii\web\View;
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt">Обратная связь</div>
+							<div class="row-block-txt" id="btn-menu-f-feedback">Обратная связь</div>
 						</div>
 					</div>
 				</div>

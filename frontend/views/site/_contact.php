@@ -15,7 +15,7 @@ use yii\captcha\Captcha;
 <div class="site-contact" id="section-contact">
 	<div class="content">
 		<div style="position:relative;overflow:hidden;">
-			<a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;" hidden>Казань</a>
+			<a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0;" hidden>Казань</a>
 			<a href="https://yandex.ru/maps/43/kazan/?from=api-maps&ll=49.116509%2C55.788843&mode=usermaps&origin=jsapi_2_1_79&um=constructor%3Ac001f6bd6724c95d6ac0ac15766d4c74423b42bee6f4cdbae6fd7db66eda7d5a&utm_medium=mapframe&utm_source=maps&z=16" style="color:#eee;font-size:12px;position:absolute;top:14px;" hidden>Карта Казани с улицами и номерами домов онлайн — Яндекс.Карты</a>
 			<iframe class="map-yandex" src="https://yandex.ru/map-widget/v1/-/CCUuiDrVlA" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
 		</div>
@@ -51,33 +51,42 @@ use yii\captcha\Captcha;
 				</div>
 			</div>
 		</div>
-		<h2>Блок контактов</h2>
-		<p>
-			Оставьте своё сообщение через форму обратной связи.
-		</p>
 
-		<div class="row">
-			<div class="col-lg-5">
-				<?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+		<div class="form-feedback" id="section-feedback">
+			<h3>Написать сообщение</h3>
+			<div class="feedback-items">
+				<div class="feedback-form">
+					<div class="row">
+						<div class="col-lg-9">
+							<?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-				<?= $form->field($model, 'name')->textInput() ?>
+							<?= $form->field($model, 'name')->textInput(['placeholder' => 'Ваше имя']) ?>
 
-				<?= $form->field($model, 'email') ?>
+							<?= $form->field($model, 'email')->textInput(['placeholder' => 'Ваш e-mail для обратной связи']) ?>
 
-				<?= $form->field($model, 'subject') ?>
+							<?= $form->field($model, 'body')->textarea(['rows' => 6, 'placeholder' => 'Текст сообщения']) ?>
 
-				<?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
+							<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+								'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+							]) ?>
 
-				<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-					'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-				]) ?>
+							<div class="form-group">
+								<?= Html::submitButton('Отправить', ['class' => 'btn btn-primary btn-main', 'name' => 'contact-button']) ?>
+							</div>
 
-				<div class="form-group">
-					<?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+							<?php ActiveForm::end(); ?>
+						</div>
+					</div>
 				</div>
 
-				<?php ActiveForm::end(); ?>
+				<div class="feedback-info">
+					<div class="feedback-info-block">
+						<h4 class="feedback-info-headline">Нужна дополнительная информация?</h4>
+						<p class="feedback-info-text">Напишите нам через форму обратной связи</p>
+					</div>
+				</div>
 			</div>
+
 		</div>
 	</div>
 

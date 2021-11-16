@@ -28,7 +28,7 @@ $(document).ready(function() {
 		loop: true,
 		nav: false,
 		dots: true,
-		// autoplay: true,
+		autoplay: true,
 		autoplayTimeout: 7000,
 		smartSpeed: 500,
 	});
@@ -80,6 +80,11 @@ $(document).ready(function() {
 		if ($(this).attr('id') === 'btn-menu-contact' || $(this).attr('id') === 'btn-menu-f-contact') {
 			$sc_contact.show();
 			// window.location.href = '#';
+		}
+
+		if ($(this).attr('id') === 'btn-menu-feedback' || $(this).attr('id') === 'btn-menu-f-feedback') {
+			$sc_contact.show();
+			$url = '/#section-feedback';
 		}
 
 		window.location.href = $url;

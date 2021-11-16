@@ -35,7 +35,7 @@ use yii\web\View;
 				</div>
 				<div class="block-div block-single-column" id="head-block-btn">
 					<div class="block-div content">
-						<a class="btn-main" href="#">Обратная связь</a>
+						<a class="btn-main" href="/#btn-menu-feedback">Обратная связь</a>
 					</div>
 				</div>
 			</div>

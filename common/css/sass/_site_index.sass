@@ -310,6 +310,7 @@
 			width: 100%
 			height: 400px
 
+
 		.contact-info
 			width: 100%
 			margin: 0 auto $height_header_nav
@@ -345,3 +346,45 @@
 
 							.contact-text-row
 								font-size: 17px
+
+
+		.form-feedback
+			width: 100%
+			padding-top: $height_header_nav
+
+			.feedback-items
+				display: flex
+				width: 100%
+				flex-direction: row
+				align-items: stretch
+				justify-content: center
+				flex-wrap: wrap
+
+				margin-top: $height_header_nav
+				min-height: 200px
+
+				.feedback-form
+					width: 75%
+
+				.feedback-info
+					//background-image: linear-gradient(rgba(242,113,111,0.93), rgba(242,113,111,0.93)), url(/images/feedback-img.jpg)
+					background-image: linear-gradient(rgba(242,113,111,0.95), rgba(242,113,111,0.7)), url(/images/feedback-img.jpg)
+					width: 25%
+					align-items: center
+					text-align: center
+					justify-content: center
+					max-height: 250px
+
+					.feedback-info-block
+						padding: 70px 35px
+
+						h4, p
+							text-align: center
+
+						.feedback-info-headline
+							color: $clr_white
+							font-size: 18px
+
+						.feedback-info-text
+							color: $clr_224
+							font-size: 12px
