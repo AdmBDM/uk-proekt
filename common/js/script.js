@@ -34,8 +34,9 @@ $(document).ready(function() {
 	});
 
 	$("[href*='/#btn-menu']").each(function () {
+		let $id = $(this).attr('href').split('#');
 		let $newEl = $("<div class='" + $(this).attr('class') +
-			"' id='" + $(this).attr('href').substr(2, 100) + "'>" +
+			"' id='" + $id[1] + "'>" +
 			$(this).html() + "</div>");
 		$(this).replaceWith($newEl);
 	});
