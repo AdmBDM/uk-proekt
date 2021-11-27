@@ -46,8 +46,8 @@ class SiteController extends Controller
 			'verbs' => [
 				'class' => VerbFilter::className(),
 				'actions' => [
-//					'logout' => ['post'],
-					'logout' => ['get'],
+					'logout' => ['post'],
+//					'logout' => ['get'],тогда и Арслана пиши, он
 				],
 			],
 		];
@@ -110,21 +110,27 @@ class SiteController extends Controller
 		Yii::$app->user->logout();
 
 //		return $this->goHome();
-
-		if (!Yii::$app->user->isGuest) {
-			return $this->goHome();
-		}
-
 		$model = new LoginForm();
-//		if ($model->load(Yii::$app->request->post()) && $model->login()) {
-//			return $this->goBack();
-//		}
-
 		$model->password = '';
 
 		return $this->render('login', [
 			'model' => $model,
 		]);
+
+//		if (!Yii::$app->user->isGuest) {
+//			return $this->goHome();
+//		}
+//
+//		$model = new LoginForm();
+//		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+//			return $this->goBack();
+//		}
+//
+//		$model->password = '';
+//
+//		return $this->render('login', [
+//			'model' => $model,
+//		]);
 
 	}
 }

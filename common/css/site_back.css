@@ -1,3 +1,17 @@
+.main-header .logo {
+  height: 60px;
+  line-height: 60px !important;
+}
 
+.main-header .logo {
+  height: 60px !important;
+}
+
+.main-sidebar {
+  padding-top: 60px !important;
+}
+.main-sidebar .sidebar-toggle {
+  float: left !important;
+}
 
 /*# sourceMappingURL=site_back.css.map */
