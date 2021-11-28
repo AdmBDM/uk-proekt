@@ -21,7 +21,7 @@ class SiteController extends Controller
 	{
 		return [
 			'access' => [
-				'class' => AccessControl::className(),
+				'class' => AccessControl::class,
 				'rules' => [
 					[
 						'actions' => ['login', 'error', 'create-user', 'params', 'session', ],
@@ -44,7 +44,7 @@ class SiteController extends Controller
 				],
 			],
 			'verbs' => [
-				'class' => VerbFilter::className(),
+				'class' => VerbFilter::class,
 				'actions' => [
 					'logout' => ['post'],
 //					'logout' => ['get'],тогда и Арслана пиши, он
@@ -103,9 +103,9 @@ class SiteController extends Controller
 	/**
 	 * Logout action.
 	 *
-	 * @return string|Response
+	 * @return string
 	 */
-	public function actionLogout()
+	public function actionLogout(): string
 	{
 		Yii::$app->user->logout();
 
@@ -116,21 +116,5 @@ class SiteController extends Controller
 		return $this->render('login', [
 			'model' => $model,
 		]);
-
-//		if (!Yii::$app->user->isGuest) {
-//			return $this->goHome();
-//		}
-//
-//		$model = new LoginForm();
-//		if ($model->load(Yii::$app->request->post()) && $model->login()) {
-//			return $this->goBack();
-//		}
-//
-//		$model->password = '';
-//
-//		return $this->render('login', [
-//			'model' => $model,
-//		]);
-
 	}
 }

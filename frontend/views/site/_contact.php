@@ -13,7 +13,11 @@ use yii\captcha\Captcha;
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact" id="section-contact">
+	<div class="go-to-admin">
+		<a href="/admin">Наши координаты</a>
+	</div>
 	<div class="content">
+<!--		<div><h5>Наши координаты</h5></div>-->
 		<div style="position:relative;overflow:hidden;">
 			<a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0;" hidden>Казань</a>
 			<a href="https://yandex.ru/maps/43/kazan/?from=api-maps&ll=49.116509%2C55.788843&mode=usermaps&origin=jsapi_2_1_79&um=constructor%3Ac001f6bd6724c95d6ac0ac15766d4c74423b42bee6f4cdbae6fd7db66eda7d5a&utm_medium=mapframe&utm_source=maps&z=16" style="color:#eee;font-size:12px;position:absolute;top:14px;" hidden>Карта Казани с улицами и номерами домов онлайн — Яндекс.Карты</a>
@@ -66,7 +70,7 @@ use yii\captcha\Captcha;
 
 							<?= $form->field($model, 'body')->textarea(['rows' => 6, 'placeholder' => 'Текст сообщения']) ?>
 
-							<?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+							<?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
 								'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
 							]) ?>
 

@@ -22,7 +22,10 @@ use yii\web\View;
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>
+							<a href="/admin">
+								<div class="row-block-txt">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>
+							</a>
+<!--							<div class="row-block-txt">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>-->
 						</div>
 					</div>
 				</div>
