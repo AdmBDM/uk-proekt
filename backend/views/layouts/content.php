@@ -1,9 +1,11 @@
 <?php
 
-use yii\helpers\Html;
+//use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\widgets\Breadcrumbs;
 use dmstr\widgets\Alert;
+
+	/* @var $content string */
 
 ?>
 <div class="content-wrapper">
@@ -14,12 +16,13 @@ use dmstr\widgets\Alert;
 			<h1>
 				<?php
 				if ($this->title !== null) {
-					echo Html::encode($this->title);
+//					echo Html::encode($this->title);
+					echo '&nbsp;';
 				} else {
 					echo Inflector::camel2words(
 						Inflector::id2camel($this->context->module->id)
 					);
-					echo ($this->context->module->id !== \Yii::$app->id) ? '<small>Module</small>' : '';
+					echo ($this->context->module->id !== Yii::$app->id) ? '<small>Module</small>' : '';
 				} ?>
 			</h1>
 		<?php } ?>
@@ -27,7 +30,7 @@ use dmstr\widgets\Alert;
 		<?=
 		Breadcrumbs::widget(
 			[
-				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+				'links' => $this->params['breadcrumbs'] ?? [],
 			]
 		) ?>
 	</section>
