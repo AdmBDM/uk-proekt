@@ -14,7 +14,8 @@ $this->title = 'Вход';
 
 $fieldOptions1 = [
 	'options' => ['class' => 'form-group has-feedback'],
-	'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+//	'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>",
+	'inputTemplate' => "{input}<span class='glyphicon glyphicon-phone form-control-feedback'></span>",
 ];
 
 $fieldOptions2 = [

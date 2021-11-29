@@ -8,6 +8,7 @@ dmstr\web\AdminLteAsset::register($this);
 Yii::$app->name = 'ООО «УК «Проект»';
 $this->title = Yii::$app->name;
 ?>
+
 <div class="site-index">
 
 	<div class="jumbotron text-center bg-transparent">

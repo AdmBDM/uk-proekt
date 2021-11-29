@@ -4,10 +4,10 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-	    'dsn' => 'pgsql:host=localhost;port=5432;dbname=ukproject',
-	    'username' => 'dbusermain',
-	    'password' => '8G6x4J2gD3i1W8x1',
-	    'charset' => 'utf8',
+		    'dsn' => 'pgsql:host=rfprt.ru;port=5432;dbname=ukproekt',
+		    'username' => 'dbuserukproekt',
+		    'password' => '8G6x4J2gD3i1W8x1',
+		    'charset' => 'utf8',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

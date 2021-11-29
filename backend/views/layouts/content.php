@@ -8,6 +8,7 @@ use dmstr\widgets\Alert;
 	/* @var $content string */
 
 ?>
+
 <div class="content-wrapper">
 	<section class="content-header">
 		<?php if (isset($this->blocks['content-header'])) { ?>
@@ -42,11 +43,10 @@ use dmstr\widgets\Alert;
 </div>
 
 <footer class="main-footer">
-	<div class="pull-right hidden-xs">
-		<b>Version</b> 2.0
-	</div>
-	<strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-	reserved.
+<!--	<div class="pull-right hidden-xs">-->
+<!--		<b>Version</b> 2.0-->
+<!--	</div>-->
+<!--	<strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.-->
 </footer>
 
 <!-- Control Sidebar -->
@@ -235,7 +235,8 @@ use dmstr\widgets\Alert;
 		</div>
 		<!-- /.tab-pane -->
 	</div>
-</aside><!-- /.control-sidebar -->
+</aside>
+<!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed
 	 immediately after the control sidebar -->
 <div class='control-sidebar-bg'></div>
