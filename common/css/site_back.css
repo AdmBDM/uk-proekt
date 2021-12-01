@@ -14,4 +14,8 @@
   float: left !important;
 }
 
+tbody > tr > td:first-child a {
+  margin-right: 7px;
+}
+
 /*# sourceMappingURL=site_back.css.map */

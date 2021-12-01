@@ -42,7 +42,9 @@ $itemsExample = [
 	],
 ];
 
-$itemsWork = [];
+$itemsWork = [
+	['label' => 'Новости', 'icon' => 'newspaper', 'url' => '/admin/news',],
+];
 ?>
 
 <aside class="main-sidebar">

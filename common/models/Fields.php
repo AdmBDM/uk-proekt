@@ -17,6 +17,11 @@ class Fields
 	static public function getRules($tableName) {
 		if ($tableName == self::TAB_NEWS) {
 			return [
+//				[['news_date',], 'date', 'format' => 'php:d.m.Y'],
+//				[['pub_date_start', 'pub_date_end'], 'datetime', 'format' => 'php:d.m.Y H:i:s'],
+				[['news_date', 'pub_date_start', 'pub_date_end'], 'safe'],
+				[['news_text', 'news_anons'], 'string'],
+				[['published'], 'boolean'],
 			];
 		}
 
@@ -31,6 +36,13 @@ class Fields
 	static public function getAttributes($tableName) {
 		if ($tableName == self::TAB_NEWS) {
 			return [
+				'id' => 'ID',
+				'news_date' => 'Дата',
+				'news_anons' => 'Анонс',
+				'news_text' => 'Полный текст',
+				'published' => 'Опубликовано',
+				'pub_date_start' => 'Начало публикации',
+				'pub_date_end' => 'Окончание публикации',
 			];
 		}
 
