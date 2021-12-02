@@ -45,6 +45,20 @@ $itemsExample = [
 $itemsWork = [
 	['label' => 'Новости', 'icon' => 'newspaper', 'url' => '/admin/news',],
 ];
+
+$itemsDocs = [
+	[
+		'label' => 'Раскрытие',
+		'icon' => 'fa-route',
+		'url' => '#',
+		'items' => [
+			['label' => 'Группы информации', 'icon' => 'sitemap', 'url' => ['/gii']],
+			['label' => 'Документы УК', 'icon' => 'file', 'url' => ['/gii']],
+			['label' => 'Собственные ср-ва', 'icon' => 'list-ul', 'url' => ['/gii']],
+			['label' => 'Финансы / Аудит', 'icon' => 'book', 'url' => ['/gii']],
+		],
+	],
+];
 ?>
 
 <aside class="main-sidebar">
@@ -56,8 +70,9 @@ $itemsWork = [
 				'items' => array_merge(
 					  $itemHead
 					, Yii::$app->user->identity->id <= 2 ? $itemsAdmin : []
-					, $itemsExample
+//					, $itemsExample
 					, $itemsWork
+					, $itemsDocs
 				),
 			]
 		) ?>

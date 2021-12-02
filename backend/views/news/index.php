@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //			'news_date',
 			[
 				'attribute' => 'news_date',
-				'value' => $model->news_date,
+				'value' => $searchModel->news_date,
 				'format' => ['date', 'php:d.m.Y'],
 				'options' => ['width' => '100'],
 				'contentOptions' => ['style'=>'text-align: center;'],
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //			'news_anons',
 			[
 				'attribute' => 'news_anons',
-				'options' => ['width' => '250'],
+				'options' => ['width' => '500'],
 			],
 //			'news_text:ntext',
 //			[

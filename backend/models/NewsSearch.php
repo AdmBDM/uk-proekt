@@ -17,11 +17,6 @@ class NewsSearch extends News
 	 */
 	public function rules()
 	{
-//        return [
-//            [['id'], 'integer'],
-//            [['news_date', 'news_text', 'pub_date_start', 'pub_date_end'], 'safe'],
-//            [['published'], 'boolean'],
-//        ];
 		return Fields::getRules(Fields::TAB_NEWS);
 	}
 
@@ -43,7 +38,8 @@ class NewsSearch extends News
 	 */
 	public function search(array $params): ActiveDataProvider
 	{
-		$query = News::find();
+		$query = News::find()
+			->orderBy(['news_date' => SORT_DESC]);
 
 		// add conditions that should always apply here
 

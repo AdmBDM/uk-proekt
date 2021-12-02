@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\models\News;
 use backend\models\NewsSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -70,8 +71,21 @@ class NewsController extends Controller
 		$model = new News();
 
 		if ($this->request->isPost) {
-			if ($model->load($this->request->post()) && $model->save()) {
-				return $this->redirect(['view', 'id' => $model->id]);
+
+//			if ($model->load($this->request->post()) && $model->save()) {
+			if ($model->load($this->request->post())) {
+
+				$post = $this->request->post();
+				$model->news_date = date('Y-m-d', strtotime($post['News']['news_date']));
+				$model->pub_date_start = date('Y-m-d H:i', strtotime($post['News']['pub_date_start']));
+				$model->pub_date_end = $post['News']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['News']['pub_date_end'])) : null;
+
+				myDebug($post);
+				myDebug($model);
+
+				if ($model->save()) {
+					return $this->redirect(['view', 'id' => $model->id]);
+				}
 			}
 		} else {
 			$model->loadDefaultValues();
@@ -93,7 +107,18 @@ class NewsController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+//		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+		if ($this->request->isPost && $model->load($this->request->post())) {
+
+			$post = Yii::$app->request->post();
+//			$model->news_date = date('Y-m-d', strtotime($this->news_date));
+			$model->news_date = date('Y-m-d', strtotime($post['News']['news_date']));
+//			$model->pub_date_start = date('Y-m-d H:i', strtotime($this->pub_date_start));
+			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['News']['pub_date_start']));
+//			$model->pub_date_end = $this->pub_date_end ? date('Y-m-d H:i', strtotime($this->pub_date_end)) : null;
+			$model->pub_date_end = $post['News']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['News']['pub_date_end'])) : null;
+			$model->save();
+
 			return $this->redirect(['view', 'id' => $model->id]);
 		}
 
