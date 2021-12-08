@@ -16,6 +16,8 @@ use yii\db\ActiveRecord;
  * @property string $pub_date_start
  * @property string|null $pub_date_end
  *
+ * @property int $curGr
+ *
  * @property DocsGroup $docsGroup
  */
 class OpenDocs extends ActiveRecord
@@ -47,7 +49,7 @@ class OpenDocs extends ActiveRecord
 	/**
 	 * Gets query for [[DocsGroup]].
 	 *
-	 * @return \yii\db\ActiveQuery
+	 * @return ActiveQuery
 	 */
 	public function getDocsGroup(): ActiveQuery
 	{

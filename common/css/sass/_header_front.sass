@@ -1,68 +1,122 @@
-.block-row
+.up-row
 	width: 100%
-	height: $height_header_info
 
-
-.block-row .block-div
-	max-width: 100%
+.up-row-columns
 	margin: 0 auto
-
-
-.block-div
-	display: flex
-	flex-wrap: nowrap
-	flex-direction: column
-	align-items: flex-start
-
-
-.block-div-info
-	padding: 10px 0
-
-.block-some-columns
-	display: flex
-	width: 100%
-	flex-direction: row
-	align-items: stretch
-	//justify-content: center
-	justify-content: space-around
-	flex-wrap: wrap
-
-
-.block-single-column
-	width: 30%
+	padding: 5px 15px 0
 	display: flex
 	flex-direction: row
+	align-content: center
 	align-items: center
+	justify-content: space-between
+
+	.up-row-col
+		width: 30%
+
+	.up-block-email
+		display: flex
+		flex-direction: row
+		align-items: center
+
+		.email-img
+			width: 20%
+			display: flex
+			justify-content: center
+
+		figure
+			margin: 0
+
+		.email-img figure
+			align-self: center
+
+		.email-txt
+			display: block
+			width: 80%
 
 
-.block-div .content
-	display: flex
-	flex-direction: row
-	align-items: center
+	.up-block-logo
+		display: flex
+		flex-direction: row
+		align-items: center
+		justify-content: center
 
-	img
-		vertical-align: middle
-		border-style: none
+		img
+			vertical-align: middle
+			border-style: none
 
-	.logo
-		width: $width_logo
-
-
-.block-div .info-text
-	display: flex
-	flex-direction: column
-	padding-left: 20px
+		.logo
+			width: $width_logo
 
 
-.info-text-block
-	display: block
-	color: #303030
-	font-size: 14px
-	font-weight: 600
+	.up-block-btn
+		text-align: right
 
-	span
-		display: inline-block
-		text-decoration: inherit
+
+//.block-row
+//	width: 100%
+//	height: $height_header_info
+//
+//
+//.block-row .block-div
+//	max-width: 100%
+//	margin: 0 auto
+//
+//
+//.block-div
+//	display: flex
+//	flex-wrap: nowrap
+//	flex-direction: column
+//	align-items: flex-start
+//
+//
+//.block-div-info
+//	padding: 10px 0
+//
+//.block-some-columns
+//	display: flex
+//	width: 100%
+//	flex-direction: row
+//	align-items: stretch
+//	//justify-content: center
+//	justify-content: space-around
+//	flex-wrap: wrap
+//
+//
+//.block-single-column
+//	width: 30%
+//	display: flex
+//	flex-direction: row
+//	align-items: center
+//
+//
+//.block-div .content
+//	display: flex
+//	flex-direction: row
+//	align-items: center
+//
+//	img
+//		vertical-align: middle
+//		border-style: none
+//
+//	.logo
+//		width: $width_logo
+//
+//
+//.block-div .info-text
+//	display: flex
+//	flex-direction: column
+//	padding-left: 20px
+//
+//
+//.info-text-block
+//	display: block
+//	color: #303030
+//	font-size: 14px
+//	font-weight: 600
+//
+//	span
+//		display: inline-block
+//		text-decoration: inherit
 
 
 #btn-menu-main,

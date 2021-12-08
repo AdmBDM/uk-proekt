@@ -64,7 +64,7 @@ class NewsController extends Controller
 	/**
 	 * Creates a new News model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 * @return string|\yii\web\Response
+	 * @return string|Response
 	 */
 	public function actionCreate()
 	{
@@ -100,7 +100,7 @@ class NewsController extends Controller
 	 * Updates an existing News model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param int $id ID
-	 * @return string|\yii\web\Response
+	 * @return string|Response
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	public function actionUpdate(int $id)
@@ -111,11 +111,8 @@ class NewsController extends Controller
 		if ($this->request->isPost && $model->load($this->request->post())) {
 
 			$post = Yii::$app->request->post();
-//			$model->news_date = date('Y-m-d', strtotime($this->news_date));
 			$model->news_date = date('Y-m-d', strtotime($post['News']['news_date']));
-//			$model->pub_date_start = date('Y-m-d H:i', strtotime($this->pub_date_start));
 			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['News']['pub_date_start']));
-//			$model->pub_date_end = $this->pub_date_end ? date('Y-m-d H:i', strtotime($this->pub_date_end)) : null;
 			$model->pub_date_end = $post['News']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['News']['pub_date_end'])) : null;
 			$model->save();
 
@@ -131,7 +128,7 @@ class NewsController extends Controller
 	 * Deletes an existing News model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param int $id ID
-	 * @return \yii\web\Response
+	 * @return Response
 	 * @throws \Throwable
 	 * @throws \yii\db\StaleObjectException
 	 * @throws NotFoundHttpException if the model cannot be found
@@ -156,6 +153,6 @@ class NewsController extends Controller
 			return $model;
 		}
 
-		throw new NotFoundHttpException('Запрашиваемая страница не найдена.');
+		throw new NotFoundHttpException(Yii::$app->params['messages']['throwNotFound']);
 	}
 }

@@ -8,4 +8,8 @@ return [
 	'user.passwordMinLength' => 8,
 //	'cacheLoginTime' => 3600 * 24 * 30,		//кэш логина на месяц
 	'cacheLoginTime' => 3600 * 24,			//кэш логина на сутки
+	'messages' => [
+		'throwNotFound' => 'Запрашиваемая страница отсутствует.',
+	],
+	'dirDocs' => 'files/docs/',
 ];

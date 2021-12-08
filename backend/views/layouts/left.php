@@ -1,6 +1,6 @@
 <?php
 $itemHead = [
-	['label' => 'Меню (' . Yii::$app->user->identity->id . ' - ' . Yii::$app->user->identity->username . ')', 'options' => ['class' => 'header']],
+	['label' => 'Меню-' . Yii::$app->user->identity->id, 'options' => ['class' => 'header']],
 ];
 
 $itemsAdmin = [
@@ -43,19 +43,19 @@ $itemsExample = [
 ];
 
 $itemsWork = [
-	['label' => 'Новости', 'icon' => 'newspaper', 'url' => '/admin/news',],
+	['label' => 'Новости', 'icon' => 'inbox', 'url' => '/admin/news',],
 ];
 
 $itemsDocs = [
 	[
 		'label' => 'Раскрытие',
-		'icon' => 'fa-route',
+		'icon' => 'comment',
 		'url' => '#',
 		'items' => [
-			['label' => 'Группы информации', 'icon' => 'sitemap', 'url' => ['/gii']],
-			['label' => 'Документы УК', 'icon' => 'file', 'url' => ['/gii']],
-			['label' => 'Собственные ср-ва', 'icon' => 'list-ul', 'url' => ['/gii']],
-			['label' => 'Финансы / Аудит', 'icon' => 'book', 'url' => ['/gii']],
+			['label' => 'Группы информации', 'icon' => 'sitemap', 'url' => ['/docs-group']],
+			['label' => 'Документы УК', 'icon' => 'file', 'url' => ['/open-docs/index?gr=1']],
+			['label' => 'Собственные ср-ва', 'icon' => 'list-ul', 'url' => ['/open-docs/index?gr=2']],
+			['label' => 'Финансы / Аудит', 'icon' => 'book', 'url' => ['/open-docs/index?gr=3']],
 		],
 	],
 ];

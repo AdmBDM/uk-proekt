@@ -1,8 +1,12 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $group DocsGroup */
+/* @var $docs OpenDocs */
+/* @var $doc OpenDocs */
 
-//use yii\helpers\Html;
+use common\models\DocsGroup;
+use common\models\OpenDocs;
 
 ?>
 
@@ -32,79 +36,31 @@
 			</div>
 		</div>
 
-		<table class="table-data">
-			<caption>Документы управляющей компании</caption>
-			<thead>
-			<tr>
-				<th class="table-col1">Наименование</th>
-				<th class="table-col2">Дата публикации</th>
-				<th class="table-col3">Срок доступа</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td><a href="/images/reglament_01102021.pdf">Регламент признания лиц квалифицированными инвесторами Общества с ограниченной ответственностью «Управляющая компания «Проект»</a></td>
-				<td>30.09.2021 17:15</td>
-				<td>Бессрочно</td>
-			</tr>
-			<tr>
-				<td><a href="/images/kriterii_otneseniya_klientov_k_inostrannym_nalogoplatelshhikam.pdf">Критерии отнесения клиентов в ООО «УК «Проект» к категории клиентов-иностранных налогоплательщиков и способы получения от них необходимой информации</a></td>
-				<td>06.08.2021 18:25</td>
-				<td>Бессрочно</td>
-			</tr>
-			<tr>
-				<td><a href="/images/reglament-po-kval.-investoram.pdf">Регламент признания лиц квалифицированными инвесторами Общества с ограниченной ответственностью «Управляющая компания «Проект» (архив)</a></td>
-				<td>06.08.2021 18:24</td>
-				<td>Бессрочно</td>
-			</tr>
-			</tbody>
-		</table>
-
-		<table class="table-data">
-			<caption>Расчёт размера собственных средств</caption>
-			<thead>
-			<tr>
-				<th class="table-col1">Наименование</th>
-				<th class="table-col2">Дата публикации</th>
-				<th class="table-col3">Срок доступа</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td><a href="/images/rss-uk-proekt-30092021.pdf">Расчет размера собственных средств ООО «УК «Проект» на 30 сентября 2021 года</a></td>
-				<td>08.10.2021 10:09</td>
-				<td>08.11.2024</td>
-			</tr>
-			<tr>
-				<td><a href="/images/rss-uk-proekt-31082021.pdf">Расчет размера собственных средств ООО «УК «Проект» на 31 августа 2021 года</a></td>
-				<td>09.09.2021 16:35</td>
-				<td>09.10.2024</td>
-			</tr>
-			<tr>
-				<td><a href="/images/rss-uk-proekt-31.07.2021.pdf">Расчет размера собственных средств ООО «УК «Проект» на 31 июля 2021 года</a></td>
-				<td>06.08.2021 17:52</td>
-				<td>06.09.2024</td>
-			</tr>
-			</tbody>
-		</table>
-
-		<table class="table-data">
-			<caption>Финансовая отчетность и аудиторские заключения</caption>
-			<thead>
-			<tr>
-				<th class="table-col1">Наименование</th>
-				<th class="table-col2">Дата публикации</th>
-				<th class="table-col3">Срок доступа</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td><a href="/images/buh-30092021.pdf">Промежуточная бухгалтерская (финансовая) отчетность за 9 месяцев 2021 года</a></td>
-				<td>27.10.2021 15:04</td>
-				<td>Бессрочно</td>
-			</tr>
-			</tbody>
-		</table>
+		<?php foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
+			$filePath = Yii::$app->params['dirDocs'] . $group->dir_group . '/';
+			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->all();
+			if ($docs) {
+			?>
+			<table class="table-data">
+				<caption><?= $group->name_group ?></caption>
+				<thead>
+				<tr>
+					<th class="table-col1">Наименование</th>
+					<th class="table-col2">Дата публикации</th>
+					<th class="table-col3">Срок доступа</th>
+				</tr>
+				</thead>
+				<tbody>
+					<?php foreach ($docs as $doc) { ?>
+						<tr>
+							<td><a href="<?= $filePath . $doc->system_file_name ?>.pdf" target="_blank"><?= $doc->original_file_name ?></a></td>
+							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
+							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+		<?php }} ?>
 
 	</div>
 </div>

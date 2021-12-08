@@ -69,19 +69,19 @@ class Fields
 		if ($tableName == self::TAB_DOCS_GROUP) {
 			return [
 				'id' => 'ID',
-				'name_group' => 'Name Group',
-				'dir_group' => 'Dir Group',
+				'name_group' => 'Наименование',
+				'dir_group' => 'Каталог',
 			];
 		}
 
 		if ($tableName == self::TAB_OPEN_DOCS) {
 			return [
 				'id' => 'ID',
-				'docs_group_id' => 'Docs Group ID',
-				'original_file_name' => 'Original File Name',
-				'system_file_name' => 'System File Name',
-				'pub_date_start' => 'Pub Date Start',
-				'pub_date_end' => 'Pub Date End',
+				'docs_group_id' => 'Группа',
+				'original_file_name' => 'Наименование документа',
+				'system_file_name' => 'Имя файла',
+				'pub_date_start' => 'Дата начала публикации',
+				'pub_date_end' => 'Дата окончания публикации',
 			];
 		}
 

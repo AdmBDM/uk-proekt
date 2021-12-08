@@ -4,6 +4,8 @@ use yii\web\View;
 
 /* @var $this View */
 /* @var $content string */
+
+Yii::$app->name = 'ООО «УК «Проект»';
 ?>
 
 <header class="main-header">
@@ -24,14 +26,16 @@ use yii\web\View;
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="/images/ukp-logo.png" class="user-image" alt="User Image"/>
-						<span class="hidden-xs">УК Проект</span>
+<!--						<span class="hidden-xs">УК Проект</span>-->
+						<span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
 					</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
 						<li class="user-header">
 							<img src="/images/ukp-logo.png" class="img-circle"
 								 alt="User Image"/>
-							<p>УК Проект</p>
+<!--							<p>УК Проект</p>-->
+							<p><?= Yii::$app->user->identity->username ?></p>
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer">
