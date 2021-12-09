@@ -10,6 +10,12 @@ return [
 	'cacheLoginTime' => 3600 * 24,			//кэш логина на сутки
 	'messages' => [
 		'throwNotFound' => 'Запрашиваемая страница отсутствует.',
+		'dataDel' => 'Вы действительно хотите удалить данные?',
 	],
-	'dirDocs' => 'files/docs/',
+	'dir' => [
+		'files' => 'files/',
+		'docs' => 'docs/',
+	],
+	'load_files' => 'png, jpg, pdf',
+	'max_load_files' => 5,
 ];

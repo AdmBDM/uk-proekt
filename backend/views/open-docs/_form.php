@@ -16,6 +16,7 @@ use yii\widgets\ActiveForm;
 
 $model->docs_group_id = $model->docs_group_id ?: $_SESSION['__curGr'];
 $model->system_file_name = $model->system_file_name ?: bin2hex(openssl_random_pseudo_bytes(16));
+
 ?>
 
 <div class="open-docs-form">
@@ -52,6 +53,8 @@ $model->system_file_name = $model->system_file_name ?: bin2hex(openssl_random_ps
 			'autoclose' => true,
 		]
 	]) ?>
+
+	<?= $form->field($model, 'imageFile')->fileInput()->label('') ?>
 
 	<div class="form-group">
 		<?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

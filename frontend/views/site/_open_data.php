@@ -8,6 +8,8 @@
 use common\models\DocsGroup;
 use common\models\OpenDocs;
 
+$docPath = Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
+
 ?>
 
 <div class="site-open_data" id="section-open_data">
@@ -37,7 +39,7 @@ use common\models\OpenDocs;
 		</div>
 
 		<?php foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
-			$filePath = Yii::$app->params['dirDocs'] . $group->dir_group . '/';
+			$filePath = $docPath . $group->dir_group . '/';
 			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->all();
 			if ($docs) {
 			?>
@@ -53,7 +55,7 @@ use common\models\OpenDocs;
 				<tbody>
 					<?php foreach ($docs as $doc) { ?>
 						<tr>
-							<td><a href="<?= $filePath . $doc->system_file_name ?>.pdf" target="_blank"><?= $doc->original_file_name ?></a></td>
+							<td><a href="<?= $filePath . $doc->system_file_name ?>.<?= $doc->file_ext ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
 							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
 							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>
 						</tr>

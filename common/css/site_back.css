@@ -1,8 +1,6 @@
 * {
   font-family: Poppins, Helvetica, sans-serif;
-  font-size: 1rem;
   font-weight: 400;
-  color: #212529;
   text-align: left;
 }
 
@@ -61,9 +59,6 @@ table caption {
 table tr {
   border-bottom: 1px solid lightgrey;
 }
-table th {
-  text-align: center;
-}
 table th:nth-last-child(2), table th:nth-last-child(1) {
   padding: 15px;
   font-weight: bolder;
@@ -78,10 +73,6 @@ table td a {
 }
 table td a:hover {
   text-decoration: none;
-}
-table td:nth-last-child(2), table td:nth-last-child(1) {
-  text-align: center;
-  text-justify: distribute-center-last;
 }
 
 .main-header .logo {

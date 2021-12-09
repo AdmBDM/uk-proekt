@@ -13,6 +13,7 @@ $itemsAdmin = [
 			['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
 		],
 	],
+//	['label' => 'Файлы', 'icon' => 'files-o', 'url' => '/admin/files',],
 ];
 
 $itemsExample = [

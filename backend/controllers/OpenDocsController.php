@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\components\FileLoadHelper;
 use common\models\OpenDocs;
 use Throwable;
 use Yii;
@@ -11,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 /**
  * OpenDocsController implements the CRUD actions for OpenDocs model.
@@ -113,6 +115,17 @@ class OpenDocsController extends Controller
 		if ($this->request->isPost && $model->load($this->request->post())) {
 
 			$post = Yii::$app->request->post();
+
+			$imageFile = UploadedFile::getInstance($model, 'imageFile');
+//			$model->image = FileLoadHelper::getFileExt($imageFile->name);
+			$model->image = FileLoadHelper::getDocsPath();
+
+			$imageFile->saveAs(FileLoadHelper::getDocsPath() . $model->system_file_name . '.' . $model->file_ext);
+
+//			myDebug($imageFile);
+//			myDebug($post);
+//			myDebug($model);
+
 			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_start']));
 			$model->pub_date_end = $post['OpenDocs']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_end'])) : null;
 			$model->save();

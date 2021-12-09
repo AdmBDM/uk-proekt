@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-//use Yii;
+use Yii;
 
 class Fields
 {
@@ -37,10 +37,11 @@ class Fields
 		if ($tableName == self::TAB_OPEN_DOCS) {
 			return [
 				[['docs_group_id', 'system_file_name'], 'required'],
-				[['docs_group_id'], 'default', 'value' => null],
+				[['docs_group_id'], 'default', 'value' => 0],
 				[['docs_group_id'], 'integer'],
-				[['original_file_name', 'system_file_name'], 'string'],
-				[['pub_date_start', 'pub_date_end'], 'safe'],
+				[['original_file_name', 'system_file_name', 'image', 'imagFile'], 'string'],
+				['file_ext', 'string', 'min' => 2, 'max' => 4],
+				[['pub_date_start', 'pub_date_end', 'image', 'imageFile'], 'safe'],
 				[['docs_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocsGroup::class, 'targetAttribute' => ['docs_group_id' => 'id']],
 			];
 		}
@@ -80,8 +81,10 @@ class Fields
 				'docs_group_id' => 'Группа',
 				'original_file_name' => 'Наименование документа',
 				'system_file_name' => 'Имя файла',
+				'file_ext' => 'Тип файла',
 				'pub_date_start' => 'Дата начала публикации',
 				'pub_date_end' => 'Дата окончания публикации',
+				'image' => 'Полный путь',
 			];
 		}
 
