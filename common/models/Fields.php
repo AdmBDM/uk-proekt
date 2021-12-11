@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use Yii;
+//use Yii;
 
 class Fields
 {
@@ -10,13 +10,15 @@ class Fields
 	const TAB_NEWS = 'News';
 	const TAB_DOCS_GROUP = 'Docs_group';
 	const TAB_OPEN_DOCS = 'Open_docs';
+	const TAB_UKP_FILES = 'Ukp_files';
 
 	/**
 	 * @param     $tableName
 	 *
 	 * @return array|array[]|null
 	 */
-	static public function getRules($tableName) {
+	static public function getRules($tableName)
+	{
 		if ($tableName == self::TAB_NEWS) {
 			return [
 				[['news_date', 'pub_date_start', 'pub_date_end'], 'safe'],
@@ -37,12 +39,19 @@ class Fields
 		if ($tableName == self::TAB_OPEN_DOCS) {
 			return [
 				[['docs_group_id', 'system_file_name'], 'required'],
-				[['docs_group_id'], 'default', 'value' => 0],
-				[['docs_group_id'], 'integer'],
-				[['original_file_name', 'system_file_name', 'image', 'imagFile'], 'string'],
-				['file_ext', 'string', 'min' => 2, 'max' => 4],
+				[['docs_group_id', 'image_id'], 'default', 'value' => 0],
+				[['docs_group_id', 'image_id'], 'integer'],
+				[['original_file_name', 'system_file_name', 'image'], 'string'],
+				['file_ext', 'string', 'min' => 2, 'max' => 7],
 				[['pub_date_start', 'pub_date_end', 'image', 'imageFile'], 'safe'],
 				[['docs_group_id'], 'exist', 'skipOnError' => true, 'targetClass' => DocsGroup::class, 'targetAttribute' => ['docs_group_id' => 'id']],
+			];
+		}
+
+		if ($tableName == self::TAB_UKP_FILES) {
+			return [
+				[['full_path', 'internal_file_name', 'external_file_name', 'file_ext', 'controller'], 'string'],
+				[['when_add', 'when_ed'], 'safe'],
 			];
 		}
 
@@ -54,7 +63,8 @@ class Fields
 	 *
 	 * @return string[]|null
 	 */
-	static public function getAttributes($tableName) {
+	static public function getAttributes($tableName)
+	{
 		if ($tableName == self::TAB_NEWS) {
 			return [
 				'id' => 'ID',
@@ -85,6 +95,20 @@ class Fields
 				'pub_date_start' => 'Дата начала публикации',
 				'pub_date_end' => 'Дата окончания публикации',
 				'image' => 'Полный путь',
+				'image_id' => 'ID файла',
+			];
+		}
+
+		if ($tableName == self::TAB_UKP_FILES) {
+			return [
+				'id' => 'ID',
+				'full_path' => 'Full Path',
+				'internal_file_name' => 'Internal File Name',
+				'external_file_name' => 'External File Name',
+				'file_ext' => 'File Ext',
+				'controller' => 'Controller',
+				'when_add' => 'When Add',
+				'when_ed' => 'When Ed',
 			];
 		}
 

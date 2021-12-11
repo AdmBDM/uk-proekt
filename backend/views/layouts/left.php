@@ -57,6 +57,7 @@ $itemsDocs = [
 			['label' => 'Документы УК', 'icon' => 'file', 'url' => ['/open-docs/index?gr=1']],
 			['label' => 'Собственные ср-ва', 'icon' => 'list-ul', 'url' => ['/open-docs/index?gr=2']],
 			['label' => 'Финансы / Аудит', 'icon' => 'book', 'url' => ['/open-docs/index?gr=3']],
+			['label' => 'Общие', 'icon' => 'file', 'url' => ['/open-docs/index?gr=4']],
 		],
 	],
 ];

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use common\components\FileLoadHelper;
 use common\models\OpenDocs;
+use common\models\UkpFiles;
 use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -86,9 +87,15 @@ class OpenDocsController extends Controller
 	public function actionCreate()
 	{
 		$model = new OpenDocs();
+		$imageFile = UploadedFile::getInstance($model, 'imageFile');
 
 		if ($this->request->isPost) {
-			if ($model->load($this->request->post()) && $model->save()) {
+//			if ($model->load($this->request->post()) && $model->save()) {
+			if ($model->load($this->request->post())) {
+
+				$this->checkImageFile($imageFile, $model);
+				$model->save();
+
 				return $this->redirect(['view', 'id' => $model->id]);
 			}
 		} else {
@@ -110,21 +117,31 @@ class OpenDocsController extends Controller
 	public function actionUpdate(int $id)
 	{
 		$model = $this->findModel($id);
+//		$model->imageFile = $this->getFile($model->image_id);
+		$imageFile = UploadedFile::getInstance($model, 'imageFile');
 
 //		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
 		if ($this->request->isPost && $model->load($this->request->post())) {
 
 			$post = Yii::$app->request->post();
 
-			$imageFile = UploadedFile::getInstance($model, 'imageFile');
 //			$model->image = FileLoadHelper::getFileExt($imageFile->name);
-			$model->image = FileLoadHelper::getDocsPath();
+//			$model->image = FileLoadHelper::getDocsPath();
 
-			$imageFile->saveAs(FileLoadHelper::getDocsPath() . $model->system_file_name . '.' . $model->file_ext);
+//			$model->imageFile = UploadedFile::getInstance($model, 'imageFile');
 
 //			myDebug($imageFile);
 //			myDebug($post);
-//			myDebug($model);
+//			if (is_null($imageFile)) {
+//				myDebug($imageFile);
+//			} else {
+//				myDebug($post);
+//			}
+
+//			$result = $imageFile->saveAs(FileLoadHelper::getDocsPath() . $model->system_file_name . '.' . $model->file_ext);
+//			myDebug($result);
+
+			$this->checkImageFile($imageFile, $model);
 
 			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_start']));
 			$model->pub_date_end = $post['OpenDocs']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_end'])) : null;
@@ -168,5 +185,45 @@ class OpenDocsController extends Controller
 		}
 
 		throw new NotFoundHttpException(Yii::$app->params['messages']['throwNotFound']);
+	}
+
+
+	public function getFile($fileId)
+	{
+		return UkpFiles::find()->where('id=' . $fileId)->one();
+//		return UkpFiles::find($fileId);
+	}
+
+
+//	protected function localPath(): string
+//	{
+//		return Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'] . $_SESSION['__curGr'] . '/';
+//	}
+
+
+	/**
+	 * @param UploadedFile $imageFile
+	 * @param OpenDocs     $model
+	 * @return void
+	 */
+	public function checkImageFile(UploadedFile $imageFile, OpenDocs $model)
+	{
+		if (!is_null($imageFile)) {
+
+			$fileUKP = new UkpFiles();
+			$fileUKP->full_path = FileLoadHelper::getDocsPath($_SESSION['__curGr']);
+
+			$fileUKP->file_ext = $model->file_ext = $imageFile->getExtension();
+
+			$fileUKP->internal_file_name = $model->system_file_name;        // . '.' . $fileUKP->file_ext;
+			$fileUKP->external_file_name = $imageFile->getBaseName();       // . '.' . $fileUKP->file_ext;
+			$fileUKP->controller = 'OpenDocs->New';
+
+			$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
+
+			$fileUKP->save();
+
+			$model->image_id = $fileUKP->id;
+		}
 	}
 }

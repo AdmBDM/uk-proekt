@@ -29,9 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				'options' => ['width' => '100'],
 			],
 //			'id',
-			'name_group',
+//			'name_group',
+			[
+				'attribute' => 'name_group',
+				'options' => ['width' => '500'],
+			],
 			'dir_group',
-
 			[
 				'label' => '',
 				'format' => 'text',

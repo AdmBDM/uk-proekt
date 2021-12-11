@@ -2,9 +2,12 @@
 
 namespace backend\controllers;
 
+use common\components\FileLoadHelper;
 use common\models\DocsGroup;
+use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,7 +19,7 @@ use yii\web\Response;
 class DocsGroupController extends Controller
 {
 	/**
-	 * @return array|\string[][]|\string[][][][]
+	 * @return array|string[][]|string[][][][]
 	 */
 	public function behaviors(): array
 	{
@@ -62,7 +65,7 @@ class DocsGroupController extends Controller
 	 * Displays a single DocsGroup model.
 	 * @param int $id ID
 	 * @return string
-	 * @throws \yii\web\NotFoundHttpException
+	 * @throws NotFoundHttpException
 	 */
 	public function actionView(int $id): string
 	{
@@ -74,7 +77,7 @@ class DocsGroupController extends Controller
 	/**
 	 * Creates a new DocsGroup model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 * @return string|\yii\web\Response
+	 * @return string|Response
 	 */
 	public function actionCreate()
 	{
@@ -82,6 +85,11 @@ class DocsGroupController extends Controller
 
 		if ($this->request->isPost) {
 			if ($model->load($this->request->post()) && $model->save()) {
+
+				$dir = FileLoadHelper::getDocsPath((string)$model->id); // проверка наличия каталога
+				if (!is_dir($dir)) {
+					mkdir($dir, 0777, true);
+				}
 				return $this->redirect(['view', 'id' => $model->id]);
 			}
 		} else {
@@ -97,14 +105,20 @@ class DocsGroupController extends Controller
 	 * Updates an existing DocsGroup model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param int $id ID
-	 * @return string|\yii\web\Response
-	 * @throws \yii\web\NotFoundHttpException
+	 * @return string|Response
+	 * @throws NotFoundHttpException
 	 */
 	public function actionUpdate(int $id)
 	{
 		$model = $this->findModel($id);
 
 		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+
+			$dir = FileLoadHelper::getDocsPath((string)$model->id); // проверка наличия каталога
+			if (!is_dir($dir)) {
+				mkdir($dir, 0777, true);
+			}
+
 			return $this->redirect(['view', 'id' => $model->id]);
 		}
 
@@ -117,10 +131,10 @@ class DocsGroupController extends Controller
 	 * Deletes an existing DocsGroup model.
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param int $id ID
-	 * @return \yii\web\Response
-	 * @throws \Throwable
-	 * @throws \yii\db\StaleObjectException
-	 * @throws \yii\web\NotFoundHttpException
+	 * @return Response
+	 * @throws Throwable
+	 * @throws StaleObjectException
+	 * @throws NotFoundHttpException
 	 */
 	public function actionDelete(int $id): Response
 	{
@@ -133,8 +147,8 @@ class DocsGroupController extends Controller
 	 * Finds the DocsGroup model based on its primary key value.
 	 * If the model is not found, a 404 HTTP exception will be thrown.
 	 * @param int $id ID
-	 * @return \common\models\DocsGroup|null
-	 * @throws \yii\web\NotFoundHttpException
+	 * @return DocsGroup|null
+	 * @throws NotFoundHttpException
 	 */
 	protected function findModel(int $id)
 	{

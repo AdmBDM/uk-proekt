@@ -9,6 +9,7 @@ use common\models\DocsGroup;
 use common\models\OpenDocs;
 
 $docPath = Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
+//$docPath = Yii::getAlias('@common') . '/' . Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
 
 ?>
 

@@ -8,8 +8,8 @@
 
 namespace common\components;
 
-//use common\models\LoadedDocuments;
 use common\models\OpenDocs;
+use common\models\UkpFiles;
 use Yii;
 
 
@@ -19,24 +19,75 @@ class FileLoadHelper
 	const DEFAULT_EXT = 'no-ext';
 
 	/**
+	 * генерация случайной 32-байтной строки
+	 *  - md5(time())
+	 *  - bin2hex(openssl_random_pseudo_bytes(16))
+	 *  - uniqid($prefix, true)
+	 *
+	 * @param string $prefix
+	 * @return string
+	 */
+	private static function generateFilename(string $prefix = ''): string
+	{
+//		return uniqid($prefix, true);
+		return $prefix . bin2hex(openssl_random_pseudo_bytes(16));
+	}
+
+	/**
+	 * @param string $curGr
+	 * @return string
+	 */
+	public static function getDocsPath(string $curGr = ''): string
+	{
+//		return Yii::getAlias('@app') . '/docs/';
+//		return Yii::getAlias('@common') . '/' . Yii::$app->params['dir']['files'];
+
+//todo: переделать фикированный алиас @COMMON на специализированный
+		return Yii::getAlias('@common') . '/' .
+			Yii::$app->params['dir']['files'] .
+			Yii::$app->params['dir']['docs'] .
+			$curGr . '/';
+//			$_SESSION['__curGr'] . '/';
+	}
+
+
+/* --------------- модули для до(пере)работки --------------- */
+
+	/**
+	 * @param int $fileId
+	 * @param $options
+	 * @return mixed
+	 */
+	public static function getFileData(int $fileId, $options)
+	{
+//		$document = OpenDocs::find()->where(['id' => (int)$fileId])->one();
+		$document = UkpFiles::find()->where('id=' . $fileId)->one();
+		if ($document) {
+			$fileData = self::getFileExt($document->system_file_name);
+			$options['data-filename'] = $document->original_file_name . '.' . $document->file_ext ;
+			$options['data-fileid'] = $document->id;
+		}
+		return $options;
+	}
+
+	/**
 	 * Загружает файл на сервер
 	 *
 	 * @param      $files           ; глобальный массив $_FILES
 	 * @param      $field           ; поле для обработки в $_FILES
 	 * @param      $docName         ; название документа
 	 * @param      $declarantId     ; номер заявления
-	 * @param null $documentTypeId  ; тип документа
 	 * @param int  $mode            ; права доступа к файлу
 	 *
 	 * @return bool|int
 	 */
 	public static function loadFiles(
-		$files,
-		$field,
-		$docName,
-		$declarantId,
-		$model,
-		$mode = 0755
+		  $files
+		, $field
+	    , $docName
+	    , $declarantId
+	    , $model
+//	    , $mode = 0755
 	)
 	{
 		if (!isset($files) || !isset($files['name'][$field])) {
@@ -53,12 +104,12 @@ class FileLoadHelper
 		// В случае если файл был загружен ранее, то на текущем шаге файл не передается
 		// В этом случае не загружаем файл заново, а отдаем данные по ранее загруженному
 		if ($fileError == UPLOAD_ERR_NO_FILE && $model->$field) {
+			$loadedDocument = UkpFiles::findOne(['id' => (int)$model->$field]);
 			$loadedDocument = OpenDocs::findOne(['id' => (int)$model->$field]);
+			self::$error = false;
 			if (!$loadedDocument) {
-				self::$error = false;
 				return false;
 			}
-			self::$error = false;
 			return $loadedDocument->id;
 		}
 
@@ -134,7 +185,6 @@ class FileLoadHelper
 		// Сохраняем в базе запись
 		$loadedDocument = new OpenDocs();
 //		$loadedDocument->declarant_id = $declarantId;
-		//$loadedDocument->document_type_id = $documentTypeId;
 		// название документа
 //		$loadedDocument->name = $docName;
 		// название файла у пользователя
@@ -187,48 +237,9 @@ class FileLoadHelper
 //			$array = mb_split('\.', $model->scan);
 			Yii::$app->response->SendFile(
 				self::getDocsPath() . $model->system_file_name . '.' . $model->file_ext,
-				$model->original_file_name . "." . $model->file_ext
+				$model->original_file_name . '.' . $model->file_ext
 			);
 //		}
-	}
-
-	/**
-	 * @return string
-	 */
-	public static function getDocsPath(){
-//		return Yii::getAlias('@app') . '/docs/';
-		return Yii::getAlias('@common') . '/' . Yii::$app->params['dir']['files'];
-	}
-
-	/**
-	 * @param int $fileId
-	 * @param $options
-	 * @return mixed
-	 */
-	public static function getFileData(int $fileId, $options)
-	{
-		$document = OpenDocs::find()->where(['id' => (int)$fileId])->one();
-		if ($document) {
-			$fileData = self::getFileExt($document->system_file_name);
-			$options['data-filename'] = $document->original_file_name . '.' . $document->file_ext ;
-			$options['data-fileid'] = $document->id;
-		}
-		return $options;
-	}
-
-	/**
-	 * генерация случайной 32-байтной строки
-	 *  - md5(time())
-	 *  - bin2hex(openssl_random_pseudo_bytes(16))
-	 *  - uniqid($prefix, true)
-	 *
-	 * @param string $prefix
-	 * @return string
-	 */
-	private static function generateFilename(string $prefix = ''): string
-	{
-//		return uniqid($prefix, true);
-		return $prefix . bin2hex(openssl_random_pseudo_bytes(16));
 	}
 
 	/**
@@ -252,7 +263,9 @@ class FileLoadHelper
 			'ext' => $fileExt,
 		];
 	}
+
 	private static $error;
+
 	public static function getError()
 	{
 		return self::$error;

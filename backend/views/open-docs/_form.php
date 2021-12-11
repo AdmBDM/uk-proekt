@@ -4,7 +4,8 @@ use common\models\DocsGroup;
 use kartik\datetime\DateTimePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\web\UploadedFile;
+use yii\widgets\ActiveForm as ActiveFormAlias;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\OpenDocs */
@@ -20,8 +21,7 @@ $model->system_file_name = $model->system_file_name ?: bin2hex(openssl_random_ps
 ?>
 
 <div class="open-docs-form">
-
-	<?php $form = ActiveForm::begin(); ?>
+	<?php $form = ActiveFormAlias::begin(); ?>
 
 	<?= $form->field($model, 'docs_group_id')->widget(Select2::class, [
 		'data' => DocsGroup::find()->select(['name_group', 'id'])->indexBy('id')->column(),
@@ -54,12 +54,14 @@ $model->system_file_name = $model->system_file_name ?: bin2hex(openssl_random_ps
 		]
 	]) ?>
 
-	<?= $form->field($model, 'imageFile')->fileInput()->label('') ?>
+	<?php if ($model->image_id == 0) {
+		echo $form->field($model, 'imageFile')->fileInput()->label('');
+	} ?>
 
 	<div class="form-group">
 		<?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
 	</div>
 
-	<?php ActiveForm::end(); ?>
+	<?php ActiveFormAlias::end(); ?>
 
 </div>
