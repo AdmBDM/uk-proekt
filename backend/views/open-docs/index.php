@@ -1,5 +1,6 @@
 <?php
 
+use common\models\DocsGroup;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -10,9 +11,12 @@ use yii\widgets\Pjax;
 
 $this->title = 'Раскрытие информации';
 $this->params['breadcrumbs'][] = $this->title;
+$gr = DocsGroup::find()->where('id=' . $_SESSION['__curGr'])->one();
+
 ?>
 
 <div class="open-docs-index">
+	<h4 style="font-style: italic; margin-bottom: 30px; margin-top: -20px"><?= $gr['name_group'] ?></h4>
 	<p>
 		<?= Html::a('Создать документ', ['create'], ['class' => 'btn btn-success']) ?>
 	</p>

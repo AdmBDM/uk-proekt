@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
 	<?= $form->field($model, 'name_group')->textInput() ?>
 
+	<?= $form->field($model, 'short_name_group')->textInput() ?>
+
 	<?= $form->field($model, 'dir_group')->textInput() ?>
 
 	<div class="form-group">

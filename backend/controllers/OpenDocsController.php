@@ -8,8 +8,9 @@ use common\models\UkpFiles;
 use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveRecord;
 use yii\db\StaleObjectException;
-use yii\web\Controller;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -18,7 +19,8 @@ use yii\web\UploadedFile;
 /**
  * OpenDocsController implements the CRUD actions for OpenDocs model.
  */
-class OpenDocsController extends Controller
+//class OpenDocsController extends Controller
+class OpenDocsController extends MyController
 {
 	/**
 	 * @return array
@@ -188,17 +190,14 @@ class OpenDocsController extends Controller
 	}
 
 
-	public function getFile($fileId)
+	/**
+	 * @param integer $fileId
+	 * @return array|ActiveRecord|null
+	 */
+	public function getFile(int $fileId)
 	{
 		return UkpFiles::find()->where('id=' . $fileId)->one();
-//		return UkpFiles::find($fileId);
 	}
-
-
-//	protected function localPath(): string
-//	{
-//		return Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'] . $_SESSION['__curGr'] . '/';
-//	}
 
 
 	/**

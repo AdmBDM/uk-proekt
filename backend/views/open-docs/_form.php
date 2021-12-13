@@ -4,7 +4,7 @@ use common\models\DocsGroup;
 use kartik\datetime\DateTimePicker;
 use kartik\select2\Select2;
 use yii\helpers\Html;
-use yii\web\UploadedFile;
+//use yii\web\UploadedFile;
 use yii\widgets\ActiveForm as ActiveFormAlias;
 
 /* @var $this yii\web\View */

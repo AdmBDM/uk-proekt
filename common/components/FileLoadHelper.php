@@ -37,17 +37,12 @@ class FileLoadHelper
 	 * @param string $curGr
 	 * @return string
 	 */
-	public static function getDocsPath(string $curGr = ''): string
+	public static function getDocsPath(string $curGr = '0'): string
 	{
-//		return Yii::getAlias('@app') . '/docs/';
-//		return Yii::getAlias('@common') . '/' . Yii::$app->params['dir']['files'];
-
-//todo: переделать фикированный алиас @COMMON на специализированный
-		return Yii::getAlias('@common') . '/' .
+		return '/' .
 			Yii::$app->params['dir']['files'] .
 			Yii::$app->params['dir']['docs'] .
 			$curGr . '/';
-//			$_SESSION['__curGr'] . '/';
 	}
 
 
@@ -87,7 +82,7 @@ class FileLoadHelper
 	    , $docName
 	    , $declarantId
 	    , $model
-//	    , $mode = 0755
+	    , $mode = 0755
 	)
 	{
 		if (!isset($files) || !isset($files['name'][$field])) {
@@ -105,7 +100,7 @@ class FileLoadHelper
 		// В этом случае не загружаем файл заново, а отдаем данные по ранее загруженному
 		if ($fileError == UPLOAD_ERR_NO_FILE && $model->$field) {
 			$loadedDocument = UkpFiles::findOne(['id' => (int)$model->$field]);
-			$loadedDocument = OpenDocs::findOne(['id' => (int)$model->$field]);
+//			$loadedDocument = OpenDocs::findOne(['id' => (int)$model->$field]);
 			self::$error = false;
 			if (!$loadedDocument) {
 				return false;
@@ -232,7 +227,7 @@ class FileLoadHelper
 	public static function getDocument(int $fileId)
 	{
 		$model = OpenDocs::findOne($fileId);
-		$user = Yii::$app->user->identity;
+//		$user = Yii::$app->user->identity;
 //		if ($user->is_operator || $model->declarant->user_id == $user->id) {
 //			$array = mb_split('\.', $model->scan);
 			Yii::$app->response->SendFile(

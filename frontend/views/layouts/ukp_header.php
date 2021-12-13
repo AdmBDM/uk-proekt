@@ -30,7 +30,7 @@ use yii\web\View;
 				</div>
 			</div>
 			<div class="up-row-col up-block-logo">
-				<a href="/index.php"><img src="/images/logo.svg" alt="" class="logo"></a>
+				<a href="/"><img src="/images/logo.svg" alt="" class="logo"></a>
 			</div>
 			<div class="up-row-col up-block-btn" id="head-block-btn">
 				<a class="btn-main" href="/#btn-menu-feedback">Обратная связь</a>

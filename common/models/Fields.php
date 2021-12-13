@@ -29,8 +29,8 @@ class Fields
 
 		if ($tableName == self::TAB_DOCS_GROUP) {
 			return [
-				[['name_group', 'dir_group'], 'required'],
-				[['name_group', 'dir_group'], 'string'],
+				[['name_group', 'short_name_group', 'dir_group'], 'required'],
+				[['name_group', 'short_name_group', 'dir_group'], 'string'],
 				[['dir_group'], 'unique'],
 				[['name_group'], 'unique'],
 			];
@@ -81,6 +81,7 @@ class Fields
 			return [
 				'id' => 'ID',
 				'name_group' => 'Наименование',
+				'short_name_group' => 'Наименование кратко',
 				'dir_group' => 'Каталог',
 			];
 		}

@@ -7,9 +7,7 @@
 
 use common\models\DocsGroup;
 use common\models\OpenDocs;
-
-$docPath = Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
-//$docPath = Yii::getAlias('@common') . '/' . Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
+use common\models\UkpFiles;
 
 ?>
 
@@ -40,8 +38,8 @@ $docPath = Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
 		</div>
 
 		<?php foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
-			$filePath = $docPath . $group->dir_group . '/';
 			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->all();
+
 			if ($docs) {
 			?>
 			<table class="table-data">
@@ -54,9 +52,11 @@ $docPath = Yii::$app->params['dir']['files'] . Yii::$app->params['dir']['docs'];
 				</tr>
 				</thead>
 				<tbody>
-					<?php foreach ($docs as $doc) { ?>
+					<?php foreach ($docs as $doc) {
+						$file = UkpFiles::find()->where('id=' . $doc->image_id)->one();
+						?>
 						<tr>
-							<td><a href="<?= $filePath . $doc->system_file_name ?>.<?= $doc->file_ext ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
+							<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $file['external_file_name'] ?></a></td>
 							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
 							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>
 						</tr>

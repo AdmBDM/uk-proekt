@@ -26,7 +26,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
 	<div class="login-box-body">
-		<p class="login-box-msg">Для входа в систему введите логин/пароль</p>
+		<p class="login-box-msg">Для входа в систему введите<br>логин / пароль</p>
 
 		<?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 

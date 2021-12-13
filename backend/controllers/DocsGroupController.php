@@ -8,7 +8,8 @@ use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
-use yii\web\Controller;
+//use yii\filters\AccessControl;
+//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -16,7 +17,8 @@ use yii\web\Response;
 /**
  * DocsGroupController implements the CRUD actions for DocsGroup model.
  */
-class DocsGroupController extends Controller
+//class DocsGroupController extends Controller
+class DocsGroupController extends MyController
 {
 	/**
 	 * @return array|string[][]|string[][][][]
@@ -25,6 +27,18 @@ class DocsGroupController extends Controller
 	{
 		return array_merge(
 			parent::behaviors(),
+//			[
+//				'access' => [
+//					'class' => AccessControl::class,
+//					'rules' => [
+//						[
+//							'actions' => ['login', 'error'],
+//							'allow' => true,
+//							'roles' =>['?']
+//						],
+//					],
+//				],
+//			],
 			[
 				'verbs' => [
 					'class' => VerbFilter::class,
@@ -43,7 +57,7 @@ class DocsGroupController extends Controller
 	public function actionIndex(): string
 	{
 		$dataProvider = new ActiveDataProvider([
-			'query' => DocsGroup::find(),
+			'query' => DocsGroup::find()->orderBy('name_group'),
 			/*
 			'pagination' => [
 				'pageSize' => 50

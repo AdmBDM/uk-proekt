@@ -1,4 +1,7 @@
 <?php
+
+use common\models\DocsGroup;
+
 $itemHead = [
 	['label' => 'Меню-' . Yii::$app->user->identity->id, 'options' => ['class' => 'header']],
 ];
@@ -43,23 +46,26 @@ $itemsExample = [
 	],
 ];
 
-$itemsWork = [
-	['label' => 'Новости', 'icon' => 'inbox', 'url' => '/admin/news',],
-];
+$itemsWork = [['label' => 'Группы информации', 'icon' => 'sitemap', 'url' => ['/docs-group']]];
+foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
+	$itemsWork[] = [
+		'label' => $group['short_name_group'],
+		'icon' => 'file',
+		'url' => ['/open-docs/index?gr=' . $group['id']],
+	];
+}
 
 $itemsDocs = [
 	[
 		'label' => 'Раскрытие',
 		'icon' => 'comment',
 		'url' => '#',
-		'items' => [
-			['label' => 'Группы информации', 'icon' => 'sitemap', 'url' => ['/docs-group']],
-			['label' => 'Документы УК', 'icon' => 'file', 'url' => ['/open-docs/index?gr=1']],
-			['label' => 'Собственные ср-ва', 'icon' => 'list-ul', 'url' => ['/open-docs/index?gr=2']],
-			['label' => 'Финансы / Аудит', 'icon' => 'book', 'url' => ['/open-docs/index?gr=3']],
-			['label' => 'Общие', 'icon' => 'file', 'url' => ['/open-docs/index?gr=4']],
-		],
+		'items' => $itemsWork
 	],
+];
+
+$itemsWork = [
+	['label' => 'Новости', 'icon' => 'inbox', 'url' => '/admin/news',],
 ];
 ?>
 
@@ -79,4 +85,7 @@ $itemsDocs = [
 			]
 		) ?>
 	</section>
+<!--	<section>-->
+<!--		--><?php //myDebug($tmp); ?>
+<!--	</section>-->
 </aside>

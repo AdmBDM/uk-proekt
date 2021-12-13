@@ -56,7 +56,7 @@ class LoginForm extends Model
 		if (!$this->hasErrors()) {
 			$user = $this->getUser();
 			if (!$user || !$user->validatePassword($this->password)) {
-				$this->addError($attribute, 'Логин или пароль не существуют.');
+				$this->addError($attribute, 'Указанная комбинация не существует!');
 			}
 		}
 	}

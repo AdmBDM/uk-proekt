@@ -5,52 +5,33 @@ namespace backend\controllers;
 use common\models\LoginForm;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use yii\web\Controller;
+//use yii\filters\AccessControl;
+//use yii\web\Controller;
 use yii\web\Response;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+//class SiteController extends Controller
+class SiteController extends MyController
 {
 	/**
 	 * @return array[]
 	 */
 	public function behaviors(): array
 	{
-		return [
-			'access' => [
-				'class' => AccessControl::class,
-				'rules' => [
-					[
-						'actions' => ['login', 'error', 'create-user', 'params', 'session', ],
-						'allow' => true,
+		return array_merge(
+			parent::behaviors(),
+			[
+				'verbs' => [
+					'class' => VerbFilter::class,
+					'actions' => [
+						'logout' => ['post'],
+//					'logout' => ['get'],
 					],
-					[
-						'actions' => ['logout', 'index', 'session',],
-						'allow' => true,
-						'roles' => ['@'],
-					],
-//					[
-//						'actions' => ['login', 'error'],
-//						'allow' => true,
-//					],
-//					[
-//						'actions' => ['logout', 'index'],
-//						'allow' => true,
-//						'roles' => ['@'],
-//					],
 				],
-			],
-			'verbs' => [
-				'class' => VerbFilter::class,
-				'actions' => [
-					'logout' => ['post'],
-//					'logout' => ['get'],тогда и Арслана пиши, он
-				],
-			],
-		];
+			]
+	);
 	}
 
 	/**

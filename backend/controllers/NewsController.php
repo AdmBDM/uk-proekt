@@ -4,8 +4,10 @@ namespace backend\controllers;
 
 use common\models\News;
 use backend\models\NewsSearch;
+use Throwable;
 use Yii;
-use yii\web\Controller;
+//use yii\web\Controller;
+use yii\db\StaleObjectException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -13,10 +15,11 @@ use yii\web\Response;
 /**
  * NewsController implements the CRUD actions for News model.
  */
-class NewsController extends Controller
+//class NewsController extends Controller
+class NewsController extends MyController
 {
 	/**
-	 * @return array|\string[][][][]|\yii\filters\VerbFilter[][]
+	 * @return array|string[][][][]|VerbFilter[][]
 	 */
 	public function behaviors(): array
 	{
@@ -76,12 +79,10 @@ class NewsController extends Controller
 			if ($model->load($this->request->post())) {
 
 				$post = $this->request->post();
-				$model->news_date = date('Y-m-d', strtotime($post['News']['news_date']));
-				$model->pub_date_start = date('Y-m-d H:i', strtotime($post['News']['pub_date_start']));
-				$model->pub_date_end = $post['News']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['News']['pub_date_end'])) : null;
+				$this->editNewsData($post['News'], $model);
 
-				myDebug($post);
-				myDebug($model);
+//				myDebug($post);
+//				myDebug($model);
 
 				if ($model->save()) {
 					return $this->redirect(['view', 'id' => $model->id]);
@@ -111,9 +112,7 @@ class NewsController extends Controller
 		if ($this->request->isPost && $model->load($this->request->post())) {
 
 			$post = Yii::$app->request->post();
-			$model->news_date = date('Y-m-d', strtotime($post['News']['news_date']));
-			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['News']['pub_date_start']));
-			$model->pub_date_end = $post['News']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['News']['pub_date_end'])) : null;
+			$this->editNewsData($post['News'], $model);
 			$model->save();
 
 			return $this->redirect(['view', 'id' => $model->id]);
@@ -129,8 +128,8 @@ class NewsController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'index' page.
 	 * @param int $id ID
 	 * @return Response
-	 * @throws \Throwable
-	 * @throws \yii\db\StaleObjectException
+	 * @throws Throwable
+	 * @throws StaleObjectException
 	 * @throws NotFoundHttpException if the model cannot be found
 	 */
 	public function actionDelete(int $id): Response
@@ -154,5 +153,17 @@ class NewsController extends Controller
 		}
 
 		throw new NotFoundHttpException(Yii::$app->params['messages']['throwNotFound']);
+	}
+
+	/**
+	 * @param      $news
+	 * @param News $model
+	 * @return void
+	 */
+	public function editNewsData($news, News $model)
+	{
+		$model->news_date = date('Y-m-d', strtotime($news['news_date']));
+		$model->pub_date_start = date('Y-m-d H:i', strtotime($news['pub_date_start']));
+		$model->pub_date_end = $news['pub_date_end'] ? date('Y-m-d H:i', strtotime($news['pub_date_end'])) : null;
 	}
 }
