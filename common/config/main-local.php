@@ -1,5 +1,12 @@
 <?php
 
+// проверка при смене пароля:
+//			= email - через почту
+//			= sms   - через телефон
+const CHECK_FROM_UNAME = 'username';
+const CHECK_FROM_EMAIL = 'email';
+const CHECK_FROM_SMS = 'sms';
+
 //--- массив параметров подключения ---
 if (strpos($_SERVER['CONTEXT_DOCUMENT_ROOT'], ':') === false) {
 	define('DATA_CONNECT_HOST', '127.0.0.1');

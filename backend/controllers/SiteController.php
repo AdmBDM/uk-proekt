@@ -84,9 +84,9 @@ class SiteController extends MyController
 	/**
 	 * Logout action.
 	 *
-	 * @return string
+	 * @return Response
 	 */
-	public function actionLogout()
+	public function actionLogout(): Response
 	{
 		Yii::$app->user->logout();
 

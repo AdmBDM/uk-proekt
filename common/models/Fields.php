@@ -11,11 +11,13 @@ class Fields
 	const TAB_DOCS_GROUP = 'Docs_group';
 	const TAB_OPEN_DOCS = 'Open_docs';
 	const TAB_UKP_FILES = 'Ukp_files';
+	const TAB_USER = 'User';
+	const FORM_LOGIN = 'Login';
 
 	/**
 	 * @param     $tableName
 	 *
-	 * @return array|array[]|null
+	 * @return array|array[]|false|string[]
 	 */
 	static public function getRules($tableName)
 	{
@@ -55,13 +57,44 @@ class Fields
 			];
 		}
 
-		return null;
+		if ($tableName == self::TAB_USER) {
+			return [
+				'id' => 'ID',
+				'username' => 'Имя пользователя',
+				'auth_key' => 'Ключ авторизации',
+				'password_hash' => 'Хэш пароля',
+				'password_reset_token' => 'Токен замены пароля',
+				'email' => 'Эл.почта',
+				'status' => 'Статус',
+				'created_at' => 'Создан',
+				'updated_at' => 'Изменён',
+				'verification_token' => 'Токен проверки',
+				'phone_number' => 'Мобильный',
+				'admin' => 'Админ',
+				'image' => 'Фото',
+			];
+		}
+
+		if ($tableName == self::FORM_LOGIN) {
+			return [
+//				// username and password are both required
+				[['username', 'password'], 'required'],
+				// phone_number and password are both required
+//				[['phone_number', 'password'], 'required'],
+				// rememberMe must be a boolean value
+				['rememberMe', 'boolean'],
+				// password is validated by validatePassword()
+				['password', 'validatePassword'],
+			];
+		}
+
+		// возвращаем, если объект не описан
+		return false;
 	}
 
 	/**
 	 * @param $tableName
-	 *
-	 * @return string[]|null
+	 * @return array[]|false|string[]
 	 */
 	static public function getAttributes($tableName)
 	{
@@ -113,6 +146,24 @@ class Fields
 			];
 		}
 
-		return null;
+		if ($tableName == self::TAB_USER) {
+			return [
+				['status', 'default', 'value' => User::STATUS_INACTIVE],
+				['status', 'in', 'range' => [User::STATUS_ACTIVE, User::STATUS_INACTIVE, User::STATUS_DELETED]],
+			];
+		}
+
+		if ($tableName == self::FORM_LOGIN) {
+			return [
+				'username' => 'Имя пользователя',
+				'email' => 'Эл.почта',
+				'phone_number' => 'Мобильный',
+				'password' => 'Пароль',
+				'rememberMe' => 'Запомнить меня',
+			];
+		}
+
+		// возвращаем, если объект не описан
+		return false;
 	}
 }

@@ -22,6 +22,8 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $phone_number
+ * @property boolean $admin
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -35,7 +37,8 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
 	public static function tableName(): string
 	{
-		return '{{%user}}';
+//		return '{{%user}}';
+		return mb_strtolower(Fields::TAB_USER);
 	}
 
 	/**
@@ -49,14 +52,22 @@ class User extends ActiveRecord implements IdentityInterface
 	}
 
 	/**
+	 * @return array|array[]|string[]|null
+	 */
+	public function attributeLabels() {
+		return Fields::getAttributes(Fields::TAB_USER);
+	}
+
+	/**
 	 * @return array[]
 	 */
 	public function rules(): array
 	{
-		return [
-			['status', 'default', 'value' => self::STATUS_INACTIVE],
-			['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-		];
+//		return [
+//			['status', 'default', 'value' => self::STATUS_INACTIVE],
+//			['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+//		];
+		return Fields::getAttributes(Fields::TAB_USER);
 	}
 
 	/**
@@ -78,7 +89,7 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
 	public static function findIdentityByAccessToken($token, $type = null)
 	{
-		throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+		throw new NotSupportedException('Поиск токена результатов не дал.');
 	}
 
 	/**
@@ -133,7 +144,7 @@ class User extends ActiveRecord implements IdentityInterface
 	 *
 	 * @return bool
 	 */
-	public static function isPasswordResetTokenValid(string $token)
+	public static function isPasswordResetTokenValid(string $token): bool
 	{
 		if (empty($token)) {
 			return false;
@@ -145,7 +156,7 @@ class User extends ActiveRecord implements IdentityInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @return array|int|mixed|string|null
 	 */
 	public function getId()
 	{
@@ -153,7 +164,7 @@ class User extends ActiveRecord implements IdentityInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @return string|null
 	 */
 	public function getAuthKey()
 	{
@@ -161,9 +172,10 @@ class User extends ActiveRecord implements IdentityInterface
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * @param $authKey
+	 * @return bool
 	 */
-	public function validateAuthKey($authKey)
+	public function validateAuthKey($authKey): bool
 	{
 		return $this->getAuthKey() === $authKey;
 	}
@@ -231,5 +243,29 @@ class User extends ActiveRecord implements IdentityInterface
 	public function removePasswordResetToken()
 	{
 		$this->password_reset_token = null;
+	}
+
+	/**
+	 * Finds user by phone
+	 *
+	 * @param string $phone_number
+	 * @return static|null
+	 */
+	public static function findByPhone(string $phone_number)
+	{
+		$phone_number = str_replace(' ', '', str_replace('(', '', str_replace(')', '', str_replace('-', '', $phone_number))));
+
+		return static::findOne(['phone_number' => $phone_number]);
+	}
+
+	/**
+	 * Finds user by email
+	 *
+	 * @param string $email
+	 * @return static|null
+	 */
+	public static function findByEmail(string $email)
+	{
+		return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
 	}
 }

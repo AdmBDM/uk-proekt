@@ -18,4 +18,7 @@ return [
 	],
 	'load_files' => 'png, jpg, pdf',
 	'max_load_files' => 5,
+	'checkPassword' => CHECK_FROM_UNAME,
+//	'checkPassword' => CHECK_FROM_SMS,
+//	'checkPassword' => CHECK_FROM_EMAIL,
 ];
