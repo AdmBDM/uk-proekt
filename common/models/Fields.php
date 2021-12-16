@@ -59,19 +59,23 @@ class Fields
 
 		if ($tableName == self::TAB_USER) {
 			return [
-				'id' => 'ID',
-				'username' => 'Имя пользователя',
-				'auth_key' => 'Ключ авторизации',
-				'password_hash' => 'Хэш пароля',
-				'password_reset_token' => 'Токен замены пароля',
-				'email' => 'Эл.почта',
-				'status' => 'Статус',
-				'created_at' => 'Создан',
-				'updated_at' => 'Изменён',
-				'verification_token' => 'Токен проверки',
-				'phone_number' => 'Мобильный',
-				'admin' => 'Админ',
-				'image' => 'Фото',
+				['status', 'default', 'value' => User::STATUS_INACTIVE],
+				['status', 'in', 'range' => [User::STATUS_ACTIVE, User::STATUS_INACTIVE, User::STATUS_DELETED]],
+				['username', 'string'],
+				['password_hash', 'string'],
+				[['pswd_hash', 'pswd', ], 'string'],
+				['password_reset_token', 'string'],
+				['verification_token', 'string'],
+				['email', 'email'],
+				['auth_key', 'string'],
+				['created_at', 'string'],
+				['updated_at', 'string'],
+				['phone_number', 'string'],
+				['admin', 'boolean'],
+				['oper', 'boolean'],
+				[['when_ed', 'username', 'password_hash', 'password_reset_token', 'verification_token', ], 'safe'],
+				[['email', 'auth_key', 'status', 'created_at', 'updated_at', ], 'safe'],
+				[['phone_number', 'admin', 'oper', 'when_ed', ], 'safe'],
 			];
 		}
 
@@ -96,6 +100,7 @@ class Fields
 	 * @param $tableName
 	 * @return array[]|false|string[]
 	 */
+
 	static public function getAttributes($tableName)
 	{
 		if ($tableName == self::TAB_NEWS) {
@@ -148,8 +153,21 @@ class Fields
 
 		if ($tableName == self::TAB_USER) {
 			return [
-				['status', 'default', 'value' => User::STATUS_INACTIVE],
-				['status', 'in', 'range' => [User::STATUS_ACTIVE, User::STATUS_INACTIVE, User::STATUS_DELETED]],
+				'id' => 'ID',
+				'username' => 'Имя пользователя',
+				'auth_key' => 'Ключ авторизации',
+				'password_hash' => 'Хэш пароля',
+				'password_reset_token' => 'Токен замены пароля',
+				'email' => 'Эл.почта',
+				'status' => 'Статус',
+				'created_at' => 'Создан',
+				'updated_at' => 'Изменён',
+				'verification_token' => 'Токен проверки',
+				'phone_number' => 'Мобильный',
+				'admin' => 'Админ',
+				'oper' => 'Оператор',
+				'image' => 'Фото',
+				'when_ed' => 'Редакция',
 			];
 		}
 

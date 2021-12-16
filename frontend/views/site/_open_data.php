@@ -38,7 +38,7 @@ use common\models\UkpFiles;
 		</div>
 
 		<?php foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
-			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->all();
+			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->where('image_id > 0')->all();
 
 			if ($docs) {
 			?>
@@ -56,7 +56,8 @@ use common\models\UkpFiles;
 						$file = UkpFiles::find()->where('id=' . $doc->image_id)->one();
 						?>
 						<tr>
-							<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $file['external_file_name'] ?></a></td>
+<!--							<td><a href="--><?//= $file['full_path'] . $file['internal_file_name'] ?><!--.--><?//= $file['file_ext'] ?><!--" target="_blank">--><?//= $file['external_file_name'] ?><!--</a></td>-->
+							<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
 							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
 							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>
 						</tr>

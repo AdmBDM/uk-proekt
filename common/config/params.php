@@ -13,7 +13,7 @@ return [
 		'dataDel' => 'Вы действительно хотите удалить данные?',
 	],
 	'dir' => [
-		'files' => 'files/',
+		'files' => 'ukpfiles/',
 		'docs' => 'docs/',
 	],
 	'load_files' => 'png, jpg, pdf',

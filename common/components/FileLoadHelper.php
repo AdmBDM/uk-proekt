@@ -39,7 +39,8 @@ class FileLoadHelper
 	 */
 	public static function getDocsPath(string $curGr = '0'): string
 	{
-		return '/' .
+//		return '/' .
+		return '' .
 			Yii::$app->params['dir']['files'] .
 			Yii::$app->params['dir']['docs'] .
 			$curGr . '/';
@@ -55,7 +56,6 @@ class FileLoadHelper
 	 */
 	public static function getFileData(int $fileId, $options)
 	{
-//		$document = OpenDocs::find()->where(['id' => (int)$fileId])->one();
 		$document = UkpFiles::find()->where('id=' . $fileId)->one();
 		if ($document) {
 			$fileData = self::getFileExt($document->system_file_name);

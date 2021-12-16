@@ -48,8 +48,8 @@ use yii\captcha\Captcha;
 					<div class="contact-item-block">
 						<img src="/images/c-globe.png" alt="" class="contact-item-img">
 						<div class="contact-item-text">
-							<div class="contact-text-row">Эл. почта : main@uk-proekt.ru</div>
-							<div class="contact-text-row">Пресс-служба : main@uk-proekt.ru</div>
+							<div class="contact-text-row">Эл.почта: main@uk-proekt.ru</div>
+							<div class="contact-text-row">Пресс-служба: main@uk-proekt.ru</div>
 						</div>
 					</div>
 				</div>

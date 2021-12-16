@@ -50,7 +50,8 @@ class OpenDocsController extends MyController
 
 		$dataProvider = new ActiveDataProvider([
 			'query' => OpenDocs::find()
-					->where('docs_group_id=' . $_SESSION['__curGr']),
+					->where('docs_group_id=' . $_SESSION['__curGr'])
+					->orderBy('pub_date_start desc'),
 			/*
 			'pagination' => [
 				'pageSize' => 50
@@ -89,14 +90,19 @@ class OpenDocsController extends MyController
 	public function actionCreate()
 	{
 		$model = new OpenDocs();
-		$imageFile = UploadedFile::getInstance($model, 'imageFile');
+
+		$model->pub_date_start = date('d.m.Y H:i',time());
 
 		if ($this->request->isPost) {
 //			if ($model->load($this->request->post()) && $model->save()) {
 			if ($model->load($this->request->post())) {
 
-				$this->checkImageFile($imageFile, $model);
+				$post = $this->request->post();
+				$model->pub_date_start = $post['OpenDocs']['pub_date_start'] ? date('Y-m-d H:i',strtotime($post['OpenDocs']['pub_date_start'])) : null;
+				$model->pub_date_end = $post['OpenDocs']['pub_date_end'] ? date('Y-m-d H:i',strtotime($post['OpenDocs']['pub_date_end'])) : null;
+
 				$model->save();
+				$this->checkImageFile($model);
 
 				return $this->redirect(['view', 'id' => $model->id]);
 			}
@@ -119,35 +125,19 @@ class OpenDocsController extends MyController
 	public function actionUpdate(int $id)
 	{
 		$model = $this->findModel($id);
-//		$model->imageFile = $this->getFile($model->image_id);
-		$imageFile = UploadedFile::getInstance($model, 'imageFile');
 
-//		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+		$model->pub_date_start = date('d.m.Y H:i', strtotime($model->pub_date_start));
+		$model->pub_date_end = $model->pub_date_end ? date('d.m.Y H:i', strtotime($model->pub_date_end)) : null;
+
 		if ($this->request->isPost && $model->load($this->request->post())) {
 
 			$post = Yii::$app->request->post();
 
-//			$model->image = FileLoadHelper::getFileExt($imageFile->name);
-//			$model->image = FileLoadHelper::getDocsPath();
-
-//			$model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-
-//			myDebug($imageFile);
-//			myDebug($post);
-//			if (is_null($imageFile)) {
-//				myDebug($imageFile);
-//			} else {
-//				myDebug($post);
-//			}
-
-//			$result = $imageFile->saveAs(FileLoadHelper::getDocsPath() . $model->system_file_name . '.' . $model->file_ext);
-//			myDebug($result);
-
-			$this->checkImageFile($imageFile, $model);
-
 			$model->pub_date_start = date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_start']));
 			$model->pub_date_end = $post['OpenDocs']['pub_date_end'] ? date('Y-m-d H:i', strtotime($post['OpenDocs']['pub_date_end'])) : null;
 			$model->save();
+
+			$this->checkImageFile($model);
 
 			return $this->redirect(['view', 'id' => $model->id]);
 		}
@@ -201,28 +191,40 @@ class OpenDocsController extends MyController
 
 
 	/**
-	 * @param UploadedFile $imageFile
 	 * @param OpenDocs     $model
 	 * @return void
 	 */
-	public function checkImageFile(UploadedFile $imageFile, OpenDocs $model)
+	public function checkImageFile(OpenDocs $model)
 	{
-		if (!is_null($imageFile)) {
+// формирование временного файла на сервере
+		$imageFile = UploadedFile::getInstance($model, 'imageFile');
 
-			$fileUKP = new UkpFiles();
-			$fileUKP->full_path = FileLoadHelper::getDocsPath($_SESSION['__curGr']);
+// выход при отсутствии файла для загрузки
+		if (is_null($imageFile)) return;
 
-			$fileUKP->file_ext = $model->file_ext = $imageFile->getExtension();
+		$model->file_ext = $imageFile->getExtension();
+		$result = $imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
 
-			$fileUKP->internal_file_name = $model->system_file_name;        // . '.' . $fileUKP->file_ext;
-			$fileUKP->external_file_name = $imageFile->getBaseName();       // . '.' . $fileUKP->file_ext;
-			$fileUKP->controller = 'OpenDocs->New';
+//		myDebug($result);
+//		myDebug($imageFile);
+//		return;
 
-			$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
+// формируем запись для БД
+		$fileUKP = new UkpFiles();
+		$fileUKP->full_path = FileLoadHelper::getDocsPath($_SESSION['__curGr']);
 
-			$fileUKP->save();
+		$fileUKP->file_ext = $model->file_ext = $imageFile->getExtension();
 
-			$model->image_id = $fileUKP->id;
-		}
+		$fileUKP->internal_file_name = $model->system_file_name;
+		$fileUKP->external_file_name = $imageFile->getBaseName();
+		$fileUKP->controller = 'OpenDocs->New';
+
+		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
+
+		$fileUKP->save();
+
+// корректируем данные по прикреплённому файлу на сервере
+		$model->image_id = $fileUKP->id;
+		$model->save();
 	}
 }

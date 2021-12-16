@@ -47,7 +47,7 @@ $fieldOptionsPassword = [
 		<?= $form
 			->field($model, 'username', $fieldOptionsName)
 			->label(false)
-			->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
+			->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('username')]) ?>
 
 		<?= $form
 			->field($model, 'password', $fieldOptionsPassword)

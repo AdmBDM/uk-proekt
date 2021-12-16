@@ -46,15 +46,15 @@ class LoginForm extends Model
 		if (!$this->hasErrors()) {
 			$user = $this->getUser();
 
-//			if (!$user || !$user->validatePassword($this->password)) {
-//				$this->addError($attribute, 'Указанная комбинация не существует!');
+			if (!$user || !$user->validatePassword($this->password)) {
+				$this->addError($attribute, 'Указанная комбинация не существует!');
+			}
+//			if (!$user) {
+//				$this->addError($attribute, 'Проблемы с юзером!');
 //			}
-			if (!$user) {
-				$this->addError($attribute, 'Проблемы с юзером!');
-			}
-			if (!$user->validatePassword($this->password)) {
-				$this->addError($attribute, 'Проблемы с паролем!');
-			}
+//			if (!$user->validatePassword($this->password)) {
+//				$this->addError($attribute, 'Проблемы с паролем!');
+//			}
 		}
 	}
 

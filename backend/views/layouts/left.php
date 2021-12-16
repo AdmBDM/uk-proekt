@@ -16,6 +16,7 @@ $itemsAdmin = [
 			['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
 		],
 	],
+	['label' => 'Пользователи', 'icon' => 'users', 'url' => '/admin/user',],
 //	['label' => 'Файлы', 'icon' => 'files-o', 'url' => '/admin/files',],
 ];
 

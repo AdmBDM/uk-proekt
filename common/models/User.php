@@ -24,10 +24,17 @@ use yii\web\IdentityInterface;
  * @property integer $updated_at
  * @property string $phone_number
  * @property boolean $admin
+ * @property boolean $oper
+ * @property integer $when_ed
  * @property string $password write-only password
+ * @property string $pswd
+ * @property string $pswd_hash
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+	public $pswd;
+	public $pswd_hash;
+
 	const STATUS_DELETED = 0;
 	const STATUS_INACTIVE = 9;
 	const STATUS_ACTIVE = 10;
@@ -67,7 +74,7 @@ class User extends ActiveRecord implements IdentityInterface
 //			['status', 'default', 'value' => self::STATUS_INACTIVE],
 //			['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
 //		];
-		return Fields::getAttributes(Fields::TAB_USER);
+		return Fields::getRules(Fields::TAB_USER);
 	}
 
 	/**
