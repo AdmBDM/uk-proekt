@@ -14,10 +14,13 @@ use common\models\UkpFiles;
 <div class="site-open_data" id="section-open_data">
 	<div class="content">
 		<div class="site-open_data-logo">
+			<div class="site-open_data-logo-block">
+				<div class="text-block"><div class="text-caps">Раскрытие<br>информации</div></div>
+			</div>
+
 			<div class="site-open_data-logo-img col-sm-8">
 				<img src="/images/53.jpg" alt="">
 			</div>
-<!--			<div class="site-open_data-logo-block">Раскрытие информации</div>-->
 		</div>
 
 		<div id="div_block-3-10" class="ct-div-block container" hidden>
@@ -56,7 +59,6 @@ use common\models\UkpFiles;
 						$file = UkpFiles::find()->where('id=' . $doc->image_id)->one();
 						?>
 						<tr>
-<!--							<td><a href="--><?//= $file['full_path'] . $file['internal_file_name'] ?><!--.--><?//= $file['file_ext'] ?><!--" target="_blank">--><?//= $file['external_file_name'] ?><!--</a></td>-->
 							<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
 							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
 							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>

@@ -90,17 +90,12 @@ class FileLoadHelper
 			self::$error = 'файлы не были загружены.';
 			return false;
 		}
-//		$fileError = null;
-//		if (isset($files) && isset($files['error'][$field])) {
-//			$fileError = $files['error'][$field];
-//		}
 		$fileError = $files['error'][$field] ?: null;
 
 		// В случае если файл был загружен ранее, то на текущем шаге файл не передается
 		// В этом случае не загружаем файл заново, а отдаем данные по ранее загруженному
 		if ($fileError == UPLOAD_ERR_NO_FILE && $model->$field) {
 			$loadedDocument = UkpFiles::findOne(['id' => (int)$model->$field]);
-//			$loadedDocument = OpenDocs::findOne(['id' => (int)$model->$field]);
 			self::$error = false;
 			if (!$loadedDocument) {
 				return false;
