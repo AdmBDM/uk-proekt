@@ -10,7 +10,6 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveRecord;
 use yii\db\StaleObjectException;
-//use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -19,7 +18,6 @@ use yii\web\UploadedFile;
 /**
  * OpenDocsController implements the CRUD actions for OpenDocs model.
  */
-//class OpenDocsController extends Controller
 class OpenDocsController extends MyController
 {
 	/**
@@ -203,11 +201,7 @@ class OpenDocsController extends MyController
 		if (is_null($imageFile)) return;
 
 		$model->file_ext = $imageFile->getExtension();
-		$result = $imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
-
-//		myDebug($result);
-//		myDebug($imageFile);
-//		return;
+		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
 
 // формируем запись для БД
 		$fileUKP = new UkpFiles();

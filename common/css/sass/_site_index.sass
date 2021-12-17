@@ -224,19 +224,32 @@
 				width: 100%
 
 		&-block
-			display: block
-			background-color: #f5f7f9
-			//float: right
-			//margin-left: -241px
-			//margin-top: 19px
-			//overflow: hidden
-			//position: relative
-			z-index: 9
-			width: 35%
-			height: 17%
-			//background-position: 0 0
-			//box-shadow: -3px 0px 7px rgb(3 3 3 / 44%)
-			box-shadow: -3px 0px 7px lightgrey
+			position: absolute
+			//display: block
+			z-index: 17
+			width: 75%
+			height: 30%
+
+			.text-block
+				background-color: #f5f7f9
+				float: right
+				width: 400px
+				height: 100%
+				margin-top: 50px
+				box-shadow: -3px 0px 7px grey
+				display: flex
+				vertical-align: middle
+				align-items: center
+
+				.text-caps
+					display: block
+					margin: auto
+					//background: yellow
+					text-align: center
+					font-size: 3em
+					font-weight: bolder
+					color: $btn_clr
+
 
 	.table-data
 		margin: 30px auto 50px

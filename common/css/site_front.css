@@ -515,12 +515,29 @@ footer:before {
   width: 100%;
 }
 .site-open_data-logo-block {
-  display: block;
+  position: absolute;
+  z-index: 17;
+  width: 75%;
+  height: 30%;
+}
+.site-open_data-logo-block .text-block {
   background-color: #f5f7f9;
-  z-index: 9;
-  width: 35%;
-  height: 17%;
-  box-shadow: -3px 0px 7px lightgrey;
+  float: right;
+  width: 400px;
+  height: 100%;
+  margin-top: 50px;
+  box-shadow: -3px 0px 7px grey;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+}
+.site-open_data-logo-block .text-block .text-caps {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 3em;
+  font-weight: bolder;
+  color: #008966;
 }
 .site-open_data .table-data {
   margin: 30px auto 50px;
