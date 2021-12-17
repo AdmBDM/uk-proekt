@@ -1,53 +1,52 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $model ContactForm */
 
-$this->title = 'My Yii Application';
+//Yii::$app->name = 'УК Проект';
+use frontend\models\ContactForm;
+use yii\helpers\Html;
+
+Yii::$app->name = 'ООО «УК «Проект»';
+$this->title = Yii::$app->name;
+
 ?>
-<div class="site-index">
+<div class="site-index" id="section-main">
+	<div id="main-slider" class="owl-carousel owl-theme">
+		<div class="item">
+			<div class="item-text-half_left">
+				<div class="slide-1">
+					<h2>Приветствуем Вас на сайте</h2>
+					<h2>ООО «УК «Проект»</h2>
+					<h3>в разделе меню "Раскрытие информации" Вы можете найти раскрываемую информацию в соответствии с Указанием Банка России № 5609-У</h3>
+				</div>
+			</div>
+			<?= Html::img('/images/slider1.jpg', ['alt' => '']) ?>
+		</div>
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+		<div class="item">
+			<div class="item-text-centered">
+				<div class="slide-2">
+					<h3>Общество с ограниченной ответственностью</h3>
+					<h1>«УК «Проект»</h1>
+					<a href="#" target="_self">Обратная связь</a>
+				</div>
+			</div>
+			<?= Html::img('/images/slider2.jpg', ['alt' => '']) ?>
+		</div>
+	</div>
 </div>
+
+<?= $this->render('_about')?>
+
+<?= $this->render('_info')?>
+
+<?= $this->render('_license')?>
+
+<?= $this->render('_open_data')?>
+
+<?= $this->render('_news')?>
+
+<?= $this->render('_contact', [
+	'model' => $model,
+])?>

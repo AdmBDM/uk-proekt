@@ -1,32 +1,71 @@
 <?php
 
+use common\models\LoginForm;
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap4\ActiveForm */
-/* @var $model \common\models\LoginForm */
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model LoginForm */
 
-use yii\bootstrap4\ActiveForm;
-use yii\bootstrap4\Html;
+dmstr\web\AdminLteAsset::register($this);
 
-$this->title = 'Login';
+$this->title = 'Вход';
+
+$fieldOptionsMail = [
+	'options' => ['class' => 'form-group has-feedback'],
+	'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+];
+
+$fieldOptionsName = [
+	'options' => ['class' => 'form-group has-feedback'],
+	'inputTemplate' => "{input}<span class='glyphicon glyphicon-user form-control-feedback'></span>"
+];
+
+$fieldOptionsMobile = [
+	'options' => ['class' => 'form-group has-feedback'],
+	'inputTemplate' => "{input}<span class='glyphicon glyphicon-phone form-control-feedback'></span>"
+];
+
+$fieldOptionsPassword = [
+	'options' => ['class' => 'form-group has-feedback'],
+	'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
 ?>
-<div class="site-login">
-    <div class="mt-5 offset-lg-3 col-lg-6">
-        <h1><?= Html::encode($this->title) ?></h1>
 
-        <p>Please fill out the following fields to login:</p>
+<div class="login-box">
+	<div class="login-box-body">
+		<p class="login-box-msg">Для входа в систему введите<br>логин / пароль</p>
 
-        <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+		<?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+<!--		--><?php //echo $form
+//			->field($model, 'phone_number', $fieldOptionsMobile)
+//			->label(false)
+//			->textInput(['autofocus' => true, 'placeholder' => '+<код страны> 123 456 7890']) ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+		<?= $form
+			->field($model, 'username', $fieldOptionsName)
+			->label(false)
+			->textInput(['autofocus' => true, 'placeholder' => $model->getAttributeLabel('username')]) ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+		<?= $form
+			->field($model, 'password', $fieldOptionsPassword)
+			->label(false)
+			->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-            <div class="form-group">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
-            </div>
+		<div class="row">
+			<div class="col-xs-8">
+				<?= $form->field($model, 'rememberMe')->checkbox() ?>
+<!--				--><?php //echo Html::a('Восстановить пароль', ['site/request-password-reset']) ?><!--.-->
+			</div>
 
-        <?php ActiveForm::end(); ?>
-    </div>
+			<div class="col-xs-4">
+				<?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+			</div>
+		</div>
+
+		<?php ActiveForm::end(); ?>
+
+	</div>
 </div>

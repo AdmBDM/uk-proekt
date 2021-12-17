@@ -10,11 +10,15 @@ use yii\web\AssetBundle;
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
-        'css/site.css',
-    ];
-    public $js = [
+	public $baseUrl = '@web';
+	public $css = [
+		'css/site_front.css',
+		'css/owl.carousel.min.css',
+		'css/owl.theme.default.min.css',
+	];
+	public $js = [
+		'js/owl.carousel.min.js',
+		'js/script.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
