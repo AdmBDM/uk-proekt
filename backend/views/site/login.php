@@ -66,6 +66,6 @@ $fieldOptionsPassword = [
 		</div>
 
 		<?php ActiveForm::end(); ?>
-
+		<a href="/">На главную</a>
 	</div>
 </div>

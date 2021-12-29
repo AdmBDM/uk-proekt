@@ -16,19 +16,21 @@ use yii\widgets\MaskedInput;
 
 	<?= $form->field($model, 'auth_key') ?>
 
-	<?= $form->field($model, 'password_hash') ?>
+	<?php if (Yii::$app->user->identity->id < 3) {
+		echo $form->field($model, 'pswd')->input('text', ['id' => 'pswd']);
 
-	<?= $form->field($model, 'pswd') ?>
+		echo $form->field($model, 'pswd_hash')->input('text', ['readonly' => true, 'id' => 'pswd_hash']);
 
-	<?= $form->field($model, 'pswd_hash') ?>
+		echo '<button type="button" id="btn-generate-pswd" class="btn btn-info">Генерировать пароль</button>';
+	} ?>
 
 	<?= $form->field($model, 'email') ?>
 
 	<?= $form->field($model, 'phone_number')->widget(MaskedInput::class, ['mask' => '(999)-999-99-99']) ?>
 
-	<?= $form->field($model, 'admin')->checkbox() ?>
+	<?= $form->field($model, 'admin')->checkbox(['disabled ' => !Yii::$app->user->identity->admin,]) ?>
 
-	<?= $form->field($model, 'oper')->checkbox() ?>
+	<?= $form->field($model, 'oper')->checkbox(['disabled ' => !(Yii::$app->user->identity->admin || (bool)Yii::$app->user->identity->oper),]) ?>
 
 	<div class="form-group">
 		<?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

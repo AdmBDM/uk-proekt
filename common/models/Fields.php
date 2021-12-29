@@ -2,8 +2,6 @@
 
 namespace common\models;
 
-//use Yii;
-
 class Fields
 {
 	//определение локальных констант
@@ -68,12 +66,12 @@ class Fields
 				['verification_token', 'string'],
 				['email', 'email'],
 				['auth_key', 'string'],
-				['created_at', 'string'],
-				['updated_at', 'string'],
+				['created_at', 'integer'],
+				['updated_at', 'integer'],
 				['phone_number', 'string'],
 				['admin', 'boolean'],
 				['oper', 'boolean'],
-				[['when_ed', 'username', 'password_hash', 'password_reset_token', 'verification_token', ], 'safe'],
+				[['username', 'password_hash', 'password_reset_token', 'verification_token', ], 'safe'],
 				[['email', 'auth_key', 'status', 'created_at', 'updated_at', ], 'safe'],
 				[['phone_number', 'admin', 'oper', 'when_ed', ], 'safe'],
 			];
@@ -98,9 +96,9 @@ class Fields
 
 	/**
 	 * @param $tableName
-	 * @return array[]|false|string[]
+	 *
+	 * @return false|string[]
 	 */
-
 	static public function getAttributes($tableName)
 	{
 		if ($tableName == self::TAB_NEWS) {
