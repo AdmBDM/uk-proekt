@@ -614,6 +614,10 @@ footer:before {
   width: 100%;
   height: 400px;
 }
+.site-contact .content .map-yandex iframe {
+  width: 100%;
+  height: 100%;
+}
 .site-contact .content .contact-info {
   width: 100%;
   margin: 0 auto 60px;

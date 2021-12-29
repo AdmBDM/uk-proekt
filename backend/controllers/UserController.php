@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\User;
 use Throwable;
 use Yii;
+use yii\base\Exception;
 use yii\data\ActiveDataProvider;
 use yii\db\StaleObjectException;
 use yii\web\Controller;
@@ -112,8 +113,19 @@ class UserController extends Controller
 		$model = $this->findModel($id);
 
 //		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-		if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-			return $this->redirect(['view', 'id' => $model->id]);
+		if ($this->request->isPost) {
+			$post = $this->request->post();
+			if ($model->load($this->request->post())) {
+				$model->password_hash = $post['User']['pswd_hash'] ?: $model->password_hash;
+
+				if ($model->save()) {
+					return $this->redirect(['view', 'id' => $model->id]);
+				} else {
+					Yii::$app->session->addFlash('error', 'Ошибка сохранения!!!');
+				}
+			} else {
+				Yii::$app->session->addFlash('error', 'Ошибка загрузки!!!');
+			}
 		}
 
 		return $this->render('update', [
@@ -155,5 +167,35 @@ class UserController extends Controller
 		}
 
 		throw new NotFoundHttpException(Yii::$app->params['messages']['throwNotFound']);
+	}
+
+	/**
+	 * Генерация парольного хэша.
+	 *
+	 * @return array
+	 * @throws Exception
+	 */
+	public function actionGeneratePswd(): array
+	{
+		$pswd = '---';
+
+		if (Yii::$app->request->isAjax) {
+
+			if (!$_POST['pswd']) {
+				$msg = '';
+			} else {
+				$msg = 'Пароль НЕ пустой!';
+				$pswd = Yii::$app->security->generatePasswordHash($_POST['pswd']);
+			}
+
+		} else {
+			$msg = "Какие-то неполадки обработки!!!";
+		}
+
+		Yii::$app->response->format = Response::FORMAT_JSON;
+		return [
+			'alert' => $msg,
+			'pswd' => $pswd,
+		];
 	}
 }

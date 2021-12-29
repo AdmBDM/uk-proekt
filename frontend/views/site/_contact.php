@@ -17,11 +17,12 @@ use yii\captcha\Captcha;
 		<a href="/admin">Наши координаты</a>
 	</div>
 	<div class="content">
-<!--		<div><h5>Наши координаты</h5></div>-->
-		<div style="position:relative;overflow:hidden;">
-			<a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0;" hidden>Казань</a>
-			<a href="https://yandex.ru/maps/43/kazan/?from=api-maps&ll=49.116509%2C55.788843&mode=usermaps&origin=jsapi_2_1_79&um=constructor%3Ac001f6bd6724c95d6ac0ac15766d4c74423b42bee6f4cdbae6fd7db66eda7d5a&utm_medium=mapframe&utm_source=maps&z=16" style="color:#eee;font-size:12px;position:absolute;top:14px;" hidden>Карта Казани с улицами и номерами домов онлайн — Яндекс.Карты</a>
-			<iframe class="map-yandex" src="https://yandex.ru/map-widget/v1/-/CCUuiDrVlA" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+		<div class="map-yandex" style="position:relative;overflow:hidden;">
+<!--			<a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0;" hidden>Казань</a>-->
+<!--			<a href="https://yandex.ru/maps/43/kazan/?from=api-maps&ll=49.116509%2C55.788843&mode=usermaps&origin=jsapi_2_1_79&um=constructor%3Ac001f6bd6724c95d6ac0ac15766d4c74423b42bee6f4cdbae6fd7db66eda7d5a&utm_medium=mapframe&utm_source=maps&z=16" style="color:#eee;font-size:12px;position:absolute;top:14px;" hidden>Карта Казани с улицами и номерами домов онлайн — Яндекс.Карты</a>-->
+<!--			<iframe class="map-yandex" src="https://yandex.ru/map-widget/v1/-/CCUuiDrVlA" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>-->
+<!--			<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A643c8a7ea0bbef4d8d878fe95c5766a2b53a9d8b2e8b253757802c25f2ede97d&amp;source=constructor" width="100%" height="500" frameborder="0"></iframe>-->
+			<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A643c8a7ea0bbef4d8d878fe95c5766a2b53a9d8b2e8b253757802c25f2ede97d&amp;source=constructor" frameborder="1"></iframe>
 		</div>
 
 		<div class="contact-info">
