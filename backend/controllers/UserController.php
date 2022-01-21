@@ -87,9 +87,23 @@ class UserController extends Controller
 		$model = new User();
 
 		if ($this->request->isPost) {
-			if ($model->load($this->request->post()) && $model->save()) {
-				return $this->redirect(['view', 'id' => $model->id]);
+			$post = $this->request->post();
+			if ($model->load($this->request->post())) {
+				$model->password_hash = $post['User']['pswd_hash'] ?: $model->password_hash;
+				$model->auth_key = $post['User']['auth_key'] ?: Yii::$app->security->generateRandomString();
+
+				if ($model->save()) {
+					return $this->redirect(['view', 'id' => $model->id]);
+				} else {
+					Yii::$app->session->addFlash('error', 'Ошибка сохранения!!!');
+				}
+			} else {
+				Yii::$app->session->addFlash('error', 'Ошибка загрузки!!!');
 			}
+
+//			if ($model->load($this->request->post()) && $model->save()) {
+//				return $this->redirect(['view', 'id' => $model->id]);
+//			}
 		} else {
 			$model->loadDefaultValues();
 		}
@@ -117,6 +131,7 @@ class UserController extends Controller
 			$post = $this->request->post();
 			if ($model->load($this->request->post())) {
 				$model->password_hash = $post['User']['pswd_hash'] ?: $model->password_hash;
+				$model->auth_key = $post['User']['auth_key'] ?: Yii::$app->security->generateRandomString();
 
 				if ($model->save()) {
 					return $this->redirect(['view', 'id' => $model->id]);

@@ -107,7 +107,8 @@ $(document).ready(function() {
 $('#btn-generate-pswd').click(function () {
 	$.ajax({
 		"type": 'post',
-		"url": '../generate-pswd',
+		// "url": '../generate-pswd',
+		"url": 'generate-pswd',
 		"data": {
 			'pswd': $('#pswd').val(),
 		},
