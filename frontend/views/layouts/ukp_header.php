@@ -21,7 +21,8 @@ use yii\web\View;
 				<div class="email-txt">
 					<a href="mailto:main@uk-proekt.ru">
 						<div class="info-text-block">
-							<span>main@uk-proekt.ru</span>
+<!--							<span>main@uk-proekt.ru</span>-->
+							<span><?= Yii::$app->params['mainEmail'] ?></span>
 						</div>
 						<div class="info-text-block">
 							<span style="font-size: .9em">эл. почта</span>

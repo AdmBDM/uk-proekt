@@ -81,6 +81,7 @@ class UserController extends Controller
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 *
 	 * @return string|Response
+	 * @throws Exception
 	 */
 	public function actionCreate()
 	{
@@ -120,6 +121,7 @@ class UserController extends Controller
 	 * @param int $id
 	 *
 	 * @return string|Response
+	 * @throws Exception
 	 * @throws NotFoundHttpException
 	 */
 	public function actionUpdate(int $id)

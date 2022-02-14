@@ -273,4 +273,10 @@ class SiteController extends UkpMainController
 			'model' => $model
 		]);
 	}
+
+	public function actionError()
+	{
+		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect('/');
+	}
 }

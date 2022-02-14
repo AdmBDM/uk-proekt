@@ -63,7 +63,8 @@ use yii\web\View;
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"><img alt="" src="/images/f-globe.png"></div>
-							<div class="row-block-txt">Электронная почта :<br>&nbsp;&nbsp;&nbsp;main@uk-proekt.ru</div>
+<!--							<div class="row-block-txt">Электронная почта :<br>&nbsp;&nbsp;&nbsp;main@uk-proekt.ru</div>-->
+							<div class="row-block-txt">Электронная почта :<br>&nbsp;&nbsp;&nbsp;<?= Yii::$app->params['mainEmail'] ?></div>
 						</div>
 					</div>
 				</div>

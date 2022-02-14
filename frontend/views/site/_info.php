@@ -51,7 +51,8 @@
 			</tr>
 			<tr>
 				<td>Электронная почта</td>
-				<td>ooo-uk-proekt@yandex.ru</td>
+<!--				<td>ooo-uk-proekt@yandex.ru</td>-->
+				<td><?= Yii::$app->params['mainEmail'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
