@@ -41,11 +41,18 @@ return [
 		'urlManager' => [
 			'class' => 'yii\web\UrlManager',
 			'enablePrettyUrl' => true,
-//			'showScriptName' => false,
+			'showScriptName' => false,
 //	        'enableStrictParsing' => true,
 			'rules' => [
+//				'login' => 'site/login',
+//				'contact' => 'site/#btn-menu-contact',
+				'' => 'site/index',
+				'<controller:\w+>/<action:[\-\w]+>/<id:\d+>'=>'<controller>/<action>',
+//				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+
 				'<controller:\w+>/<id:\d+>' => '<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+				'<controller:\w+>/<action:\w+>?<other:\.+>'=>'<controller>/<action>?<other>',
 				'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 //	            '<controller:\w+>/<action:[\-\w]+>/<id:\d+>' => '<controller>/<action>',
 //	            '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

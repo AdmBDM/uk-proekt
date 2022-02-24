@@ -44,7 +44,6 @@ class User extends ActiveRecord implements IdentityInterface
 	 */
 	public static function tableName(): string
 	{
-//		return '{{%user}}';
 		return mb_strtolower(Fields::TAB_USER);
 	}
 

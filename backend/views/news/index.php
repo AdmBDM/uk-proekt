@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			[
 				'class' => ActionColumn::class,
 // Определяем набор кнопок. По умолчанию {view} {update} {delete}
-				'template' => '{view} {update}' . (Yii::$app->user->identity->id > 2 ?: ' {delete}'),
+				'template' => '{view} {update}' . (Yii::$app->user->identity->id > 2 ? '' : ' {delete}'),
 				'header'=>'Действия',
 				'options' => ['width' => '100'],
 			],

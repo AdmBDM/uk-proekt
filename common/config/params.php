@@ -1,7 +1,10 @@
 <?php
 return [
-	'adminEmail' => 'admin@example.com',
-	'supportEmail' => 'support@example.com',
+	'adminEmail' => 'it@uk-proekt.ru',
+	'mainEmail' => 'main@uk-proekt.ru',
+	'phoneWork' => '+7 (843) 251-18-19',
+	'phoneMobile' => '+7 987 172-75-92',
+	'supportEmail' => 'support@uk-proekt.ru',
 	'senderEmail' => 'noreply@example.com',
 	'senderName' => 'Example.com mailer',
 	'user.passwordResetTokenExpire' => 3600,

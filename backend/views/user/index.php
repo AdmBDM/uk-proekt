@@ -41,14 +41,14 @@ $this->params['breadcrumbs'][] = $this->title;
 			//'email:email',
 			[
 				'attribute' => 'email',
-				'options' => ['width' => '200'],
+				'options' => ['width' => '250'],
 			],
 			//'status',
 			//'created_at',
 			[
 				'attribute' => 'created_at',
 				'format' => ['date', 'php:d.m.Y H:i'],
-				'options' => ['width' => '200'],
+				'options' => ['width' => '150'],
 //				'contentOptions' => ['style'=>'text-align: center;'],
 			],
 			//'updated_at',

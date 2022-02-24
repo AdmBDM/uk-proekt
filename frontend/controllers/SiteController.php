@@ -77,20 +77,21 @@ class SiteController extends UkpMainController
 	 */
 	public function actionIndex()
 	{
-		$model = new ContactForm();
-		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-			if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-				Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение. Мы ответим вам как можно скорее...');
-			} else {
-				Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-			}
-
-			return $this->refresh();
-		}
-
-		return $this->render('index', [
-			'model' => $model,
-		]);
+//		$model = new ContactForm();
+//		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+//			if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+//				Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение. Мы ответим вам как можно скорее...');
+//			} else {
+//				Yii::$app->session->setFlash('error', 'Ошибка при отправке сообщения.');
+//			}
+//
+//			return $this->refresh();
+//		}
+//
+//		return $this->render('index', [
+//			'model' => $model,
+//		]);
+		return $this->render('about');
 	}
 
 	/**
@@ -149,6 +150,7 @@ class SiteController extends UkpMainController
 		return $this->render('contact', [
 			'model' => $model,
 		]);
+		return $this->render('contact');
 	}
 
 	/**
@@ -159,6 +161,26 @@ class SiteController extends UkpMainController
 	public function actionAbout(): string
 	{
 		return $this->render('about');
+	}
+
+	/**
+	 * Displays open-info page.
+	 *
+	 * @return string
+	 */
+	public function actionOpenInfo(): string
+	{
+		return $this->render('open-info');
+	}
+
+	/**
+	 * Displays news page.
+	 *
+	 * @return string
+	 */
+	public function actionNews(): string
+	{
+		return $this->render('news');
 	}
 
 	/**

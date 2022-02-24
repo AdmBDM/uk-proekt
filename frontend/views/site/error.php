@@ -10,18 +10,19 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="site-error">
+	<div class="content">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+		<p>&nbsp;</p>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
-    </div>
+		<div class="alert alert-danger">
+			<?= 'При попытке выполнить запрос и перейти по адресу <b class="alert alert-warning">' . $_SERVER['REQUEST_URI'] . '</b> ' . mb_strtolower($this->context->module->requestedAction->defaultMessage); ?>
+			<h2><?= Html::encode($this->title) ?></h2>
+			<?= nl2br(Html::encode($message)) ?>
+		</div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
+		<p class="alert alert-warning">Пожалуйста, сообщите администратору об ошибке.</p>
+
+		<p><a href="/">На главную</a></p>
+	</div>
 
 </div>

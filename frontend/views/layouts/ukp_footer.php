@@ -25,7 +25,6 @@ use yii\web\View;
 							<a href="/admin">
 								<div class="row-block-txt">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>
 							</a>
-<!--							<div class="row-block-txt">Общество с ограниченной ответственностью «Управляющая компания «Проект»</div>-->
 						</div>
 					</div>
 				</div>
@@ -59,11 +58,11 @@ use yii\web\View;
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"><img alt="" src="/images/f-phone.png"></div>
-							<div class="row-block-txt">Телефон :<br>&nbsp;&nbsp;&nbsp;+7 (843) 251-18-19</div>
+							<div class="row-block-txt">Телефон :<br>&nbsp;&nbsp;&nbsp;<?= Yii::$app->params['phoneWork'] ?></div>
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"><img alt="" src="/images/f-globe.png"></div>
-							<div class="row-block-txt">Электронная почта :<br>&nbsp;&nbsp;&nbsp;main@uk-proekt.ru</div>
+							<div class="row-block-txt">Электронная почта :<br>&nbsp;&nbsp;&nbsp;<?= Yii::$app->params['mainEmail'] ?></div>
 						</div>
 					</div>
 				</div>
@@ -72,25 +71,55 @@ use yii\web\View;
 				<div class="footer-item-block">
 					<div class="footer-item-text">
 						<div class="footer-text-header">Карта сайта</div>
+<!--						<div class="footer-text-row-block">-->
+<!--							<div class="row-block-img"></div>-->
+<!--							<div class="row-block-txt" id="btn-menu-f-main">О компании</div>-->
+<!--						</div>-->
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt" id="btn-menu-f-main">О компании</div>
+							<div class="row-block-txt">
+								<a href="/site/about" id="btn-menu-f-main">О компании</a>
+							</div>
 						</div>
+<!--						<div class="footer-text-row-block">-->
+<!--							<div class="row-block-img"></div>-->
+<!--							<div class="row-block-txt" id="btn-menu-f-open_data">Раскрытие информации</div>-->
+<!--						</div>-->
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt" id="btn-menu-f-open_data">Раскрытие информации</div>
+							<div class="row-block-txt">
+								<a href="/site/open-info" id="btn-menu-f-open_data">Раскрытие информации</a>
+							</div>
 						</div>
+<!--						<div class="footer-text-row-block">-->
+<!--							<div class="row-block-img"></div>-->
+<!--							<div class="row-block-txt" id="btn-menu-f-news">Новости</div>-->
+<!--						</div>-->
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt" id="btn-menu-f-news">Новости</div>
+							<div class="row-block-txt">
+								<a href="/site/news" id="btn-menu-f-news">Новости</a>
+							</div>
 						</div>
+<!--						<div class="footer-text-row-block">-->
+<!--							<div class="row-block-img"></div>-->
+<!--							<div class="row-block-txt" id="btn-menu-f-contact">Контакты</div>-->
+<!--						</div>-->
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt" id="btn-menu-f-contact">Контакты</div>
+							<div class="row-block-txt">
+								<a href="/site/contact" id="btn-menu-f-contact">Контакты</a>
+							</div>
 						</div>
+<!--						<div class="footer-text-row-block">-->
+<!--							<div class="row-block-img"></div>-->
+<!--							<div class="row-block-txt" id="btn-menu-f-feedback">Обратная связь</div>-->
+<!--						</div>-->
 						<div class="footer-text-row-block">
 							<div class="row-block-img"></div>
-							<div class="row-block-txt" id="btn-menu-f-feedback">Обратная связь</div>
+							<div class="row-block-txt">
+								<a href="/site/contact/#section-feedback" id="btn-menu-f-feedback">Обратная связь</a>
+							</div>
 						</div>
 					</div>
 				</div>
