@@ -11,8 +11,12 @@ use yii\bootstrap4\Html;
 //use yii\bootstrap4\NavBar;
 use yii\web\View;
 
+Yii::$app->name = 'ООО «УК «Проект»';
+$this->title = Yii::$app->name;
+
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>" class="h-100">

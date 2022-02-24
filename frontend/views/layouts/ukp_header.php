@@ -3,10 +3,11 @@
 /* @var $this View */
 /* @var $content string */
 
-use yii\bootstrap4\Html;
+//use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\web\View;
+use yii\helpers\Html;
 ?>
 
 <header class="header-wrapper">
@@ -34,7 +35,8 @@ use yii\web\View;
 				<a href="/"><img src="/images/logo.svg" alt="" class="logo"></a>
 			</div>
 			<div class="up-row-col up-block-btn" id="head-block-btn">
-				<a class="btn-main" href="/#btn-menu-feedback">Обратная связь</a>
+<!--				<a class="btn-main" href="/#btn-menu-feedback">Обратная связь</a>-->
+				<a class="btn-main" href="/site/contact/#section-feedback" id="btn-menu-feedback">Обратная связь</a>
 			</div>
 		</div>
 	</div>
@@ -81,10 +83,14 @@ use yii\web\View;
 		],
 	]);
 	$menuItems = [
-		['label' => 'О компании', 'url' => ['/#btn-menu-main']],
-		['label' => 'Раскрытие информации', 'url' => ['/#btn-menu-open_data']],
-		['label' => 'Новости', 'url' => ['/#btn-menu-news']],
-		['label' => 'Контакты', 'url' => ['/#btn-menu-contact']],
+//		['label' => 'О компании', 'url' => ['/#btn-menu-main']],
+		['label' => 'О компании', 'url' => ['about']],
+//		['label' => 'Раскрытие информации', 'url' => ['/#btn-menu-open_data']],
+		['label' => 'Раскрытие информации', 'url' => ['open-info']],
+//		['label' => 'Новости', 'url' => ['/#btn-menu-news']],
+		['label' => 'Новости', 'url' => ['news']],
+//		['label' => 'Контакты', 'url' => ['/#btn-menu-contact']],
+		['label' => 'Контакты', 'url' => ['contact']],
 	];
 	echo Nav::widget([
 		'options' => ['class' => 'navbar-nav'],

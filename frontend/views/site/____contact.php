@@ -40,8 +40,8 @@ use yii\captcha\Captcha;
 					<div class="contact-item-block">
 						<img src="/images/c-phone.png" alt="" class="contact-item-img">
 						<div class="contact-item-text">
-							<div class="contact-text-row">Телефон : +7 (843) 251-18-19</div>
-							<div class="contact-text-row">Телефон : +7 987 172-75-92</div>
+							<div class="contact-text-row">Телефон : <?= Yii::$app->params['phoneWork'] ?></div>
+							<div class="contact-text-row">Телефон : <?= Yii::$app->params['phoneMobile'] ?></div>
 						</div>
 					</div>
 				</div>
@@ -49,8 +49,8 @@ use yii\captcha\Captcha;
 					<div class="contact-item-block">
 						<img src="/images/c-globe.png" alt="" class="contact-item-img">
 						<div class="contact-item-text">
-							<div class="contact-text-row">Эл.почта: main@uk-proekt.ru</div>
-							<div class="contact-text-row">Пресс-служба: main@uk-proekt.ru</div>
+							<div class="contact-text-row">Эл.почта: <?= Yii::$app->params['mainEmail'] ?></div>
+							<div class="contact-text-row">Пресс-служба: <?= Yii::$app->params['mainEmail'] ?></div>
 						</div>
 					</div>
 				</div>

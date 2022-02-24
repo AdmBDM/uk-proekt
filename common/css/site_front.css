@@ -243,6 +243,9 @@ footer .footer-items .footer-item .footer-item-block .footer-item-text .footer-t
 footer .footer-items .footer-item .footer-item-block .footer-item-text .footer-text-row-block {
   padding-top: 10px;
 }
+footer .footer-items .footer-item .footer-item-block .footer-item-text .footer-text-row-block a {
+  color: #ffffff;
+}
 footer .footer-items .footer-item .footer-item-block .footer-item-text .footer-text-row-block .row-block-img {
   display: block;
   width: 25px;

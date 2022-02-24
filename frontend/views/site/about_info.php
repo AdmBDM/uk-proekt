@@ -45,13 +45,14 @@
 			</tr>
 			<tr>
 				<td>Телефон</td>
-				<td>+7 (843) 251-18-19</td>
+				<!--				<td>+7 (843) 251-18-19</td>-->
+				<td><?= Yii::$app->params['phoneWork'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>Электронная почта</td>
-<!--				<td>ooo-uk-proekt@yandex.ru</td>-->
+				<!--				<td>ooo-uk-proekt@yandex.ru</td>-->
 				<td><?= Yii::$app->params['mainEmail'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
