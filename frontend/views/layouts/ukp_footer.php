@@ -54,7 +54,7 @@ use yii\web\View;
 						<div class="footer-text-header">Адреса и контакты</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"><img alt="" src="/images/f-map.png"></div>
-							<div class="row-block-txt">420111, Республика Татарстан, г. Казань, ул. Астрономическая, д. 8/21, оф. 17</div>
+							<div class="row-block-txt"><?= Yii::$app->params['addressCity'] . Yii::$app->params['addressStreet'] ?></div>
 						</div>
 						<div class="footer-text-row-block">
 							<div class="row-block-img"><img alt="" src="/images/f-phone.png"></div>

@@ -39,20 +39,18 @@
 			</tr>
 			<tr>
 				<td>Юридический адрес</td>
-				<td>420111, Республика Татарстан, г. Казань, ул. Астрономическая, д.8/21, оф.17</td>
+				<td><?= Yii::$app->params['addressCity'] . Yii::$app->params['addressStreet'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>Телефон</td>
-				<!--				<td>+7 (843) 251-18-19</td>-->
 				<td><?= Yii::$app->params['phoneWork'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>Электронная почта</td>
-				<!--				<td>ooo-uk-proekt@yandex.ru</td>-->
 				<td><?= Yii::$app->params['mainEmail'] ?></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
