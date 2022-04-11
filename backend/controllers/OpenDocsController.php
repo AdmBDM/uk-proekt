@@ -206,6 +206,7 @@ class OpenDocsController extends MyController
 // формируем запись для БД
 		$fileUKP = new UkpFiles();
 		$fileUKP->full_path = FileLoadHelper::getDocsPath($_SESSION['__curGr']);
+		$fileUKP->full_path = $fileUKP->full_path[0] == '/' ? $fileUKP->full_path : '/' . $fileUKP->full_path;
 
 		$fileUKP->file_ext = $model->file_ext = $imageFile->getExtension();
 
