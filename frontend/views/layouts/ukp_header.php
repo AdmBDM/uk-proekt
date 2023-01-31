@@ -41,38 +41,6 @@ use yii\web\View;
 		</div>
 	</div>
 
-<!--	<div class="block-row">-->
-<!--		<div class="block-div block-div-info">-->
-<!--			<div class="block-some-columns">-->
-<!--				<div class="block-div block-single-column" id="head-block-email">-->
-<!--					<div class="block-div content">-->
-<!--						<img src="/images/message.png" alt="">-->
-<!--						<a href="mailto:main@uk-proekt.ru">-->
-<!--							<div class="block-div info-text">-->
-<!--							<div class="info-text-block">-->
-<!--								<span>main@uk-proekt.ru</span>-->
-<!--							</div>-->
-<!--							<div class="info-text-block">-->
-<!--								<span style="font-size: .9em">эл. почта</span>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--						</a>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="block-div block-single-column" id="head-block-logo">-->
-<!--					<div class="block-div content">-->
-<!--						<a href="/index.php"><img src="/images/logo.svg" alt="" class="logo"></a>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="block-div block-single-column" id="head-block-btn">-->
-<!--					<div class="block-div content">-->
-<!--						<a class="btn-main" href="/#btn-menu-feedback">Обратная связь</a>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-
 	<?php
 	NavBar::begin([
 		'id' => 'ukp-nav',
@@ -83,13 +51,10 @@ use yii\web\View;
 		],
 	]);
 	$menuItems = [
-//		['label' => 'О компании', 'url' => ['/#btn-menu-main']],
 		['label' => 'О компании', 'url' => ['about']],
-//		['label' => 'Раскрытие информации', 'url' => ['/#btn-menu-open_data']],
 		['label' => 'Раскрытие информации', 'url' => ['open-info']],
-//		['label' => 'Новости', 'url' => ['/#btn-menu-news']],
+		['label' => 'Фонды', 'url' => ['funds']],
 		['label' => 'Новости', 'url' => ['news']],
-//		['label' => 'Контакты', 'url' => ['/#btn-menu-contact']],
 		['label' => 'Контакты', 'url' => ['contact']],
 	];
 	echo Nav::widget([

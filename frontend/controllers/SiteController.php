@@ -184,6 +184,16 @@ class SiteController extends UkpMainController
 	}
 
 	/**
+	 * Displays funds page.
+	 *
+	 * @return string
+	 */
+	public function actionFunds(): string
+	{
+		return $this->render('funds');
+	}
+
+	/**
 	 * Signs user up.
 	 *
 	 * @return string|Response

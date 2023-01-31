@@ -8,8 +8,25 @@ use yii\web\View;
 
 ?>
 <!--<footer class="footer mt-auto py-3 text-muted">-->
+<div class="content">
+	<div class="about-text-item" style="margin: 50px auto">
+		<div class="service-img" style="float: left">
+			<div class="service-img-round">
+				<?= \yii\helpers\Html::img('/images/team.png', ['alt' => '']) ?>
+			</div>
+		</div>
+		<div class="info-item" style="margin-left: 50px">
+			<div class="service-txt">
+				<div class="service-header">ИНФОРМАЦИЯ</div>
+				<div class="service-text">Стоимость инвестиционных паёв и ипотечных сертификатов участия может увеличиваться и уменьшаться. Результаты инвестирования в прошлом не определяют доходы в будущем. Государство не гарантирует доходность инвестиций в паевые инвестиционные фонды и ипотечное покрытие. До приобретения инвестиционных паёв следует ознакомиться с Правилами доверительного управления паевым инвестиционным фондом.<br>ООО "УК "Проект" не несёт ответственности за возможные убытки инвестора в случае совершения операций с паями.</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <footer>
 <!--	<div class="footer-info-area">-->
+
 	<div class="content">
 		<div class="footer-items">
 			<div class="footer-item">

@@ -41,7 +41,7 @@ use common\models\UkpFiles;
 			</div>
 		</div>
 
-		<?php foreach (DocsGroup::find()->orderBy('id')->all() as $group) {
+		<?php foreach (DocsGroup::find()->orderBy('sort')->all() as $group) {
 			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->where('image_id > 0')->all();
 
 			if ($docs) {

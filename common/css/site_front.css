@@ -601,6 +601,9 @@ footer:before {
   margin-left: 15px;
   margin-bottom: 20px;
 }
+.site-news .news-year .year-val-cursor:hover {
+  cursor: pointer;
+}
 
 .site-contact .go-to-admin {
   text-align: center;
