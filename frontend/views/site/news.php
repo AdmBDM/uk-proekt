@@ -24,7 +24,6 @@ $itemsNews = News::find()
 	</div>
 	<div class="content">
 		<h2>Новости ООО «УК «Проект»</h2>
-<!--		--><?//= myDebug($listYears); ?>
 		<div class="news-year">
 			<?php
 				foreach ($listYears as $y) { ?>
