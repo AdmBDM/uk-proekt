@@ -16,6 +16,7 @@ $itemsNews = News::find()
 	->orderBy(['news_date' => SORT_DESC])
 	->all();
 
+$firstYear = true;
 ?>
 
 <div class="site-news">
@@ -30,9 +31,10 @@ $itemsNews = News::find()
 
 				<div class="news-year-content" id="news-<?= $y['news_year'] ?>">
 					<div class="year-val year-val-cursor" id="year-<?= $y['news_year'] ?>"><?= $y['news_year'] ?></div>
-					<div id="news-content-<?= $y['news_year'] ?>" hidden>
+					<div id="news-content-<?= $y['news_year'] ?>" <?= $firstYear ? '' : 'hidden' ?>>
 						<div class="news-content">
 							<?php
+							$firstYear = false;
 							foreach ($itemsNews as $k => $item) {
 								if (date('Y', strtotime($item['news_date'])) == $y['news_year']) { ?>
 									<div class="news-item-caption">

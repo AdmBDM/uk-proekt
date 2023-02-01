@@ -1,5 +1,9 @@
 <?php
 /* @var $this yii\web\View */
+
+use frontend\assets\AppAsset;
+
+AppAsset::register($this);
 ?>
 
 <?= $this->render('about_slider')?>
@@ -9,4 +13,3 @@
 <?= $this->render('about_info')?>
 
 <?= $this->render('about_license')?>
-
