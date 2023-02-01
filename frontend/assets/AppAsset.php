@@ -9,8 +9,9 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+	public $basePath = '@webroot';
 	public $baseUrl = '@web';
+//	public $sourcePath = '@common';
 	public $css = [
 		'css/site_front.css',
 		'css/owl.carousel.min.css',
@@ -19,9 +20,9 @@ class AppAsset extends AssetBundle
 	public $js = [
 		'js/owl.carousel.min.js',
 		'js/script.js',
-    ];
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap4\BootstrapAsset',
-    ];
+	];
+	public $depends = [
+		'yii\web\YiiAsset',
+		'yii\bootstrap4\BootstrapAsset',
+	];
 }
