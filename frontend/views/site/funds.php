@@ -2,6 +2,12 @@
 
 /* @var $this yii\web\View */
 
+use common\models\DocsGroup;
+//use common\models\OpenDocs;
+use common\models\UkpFiles;
+
+$groups = DocsGroup::find()->orderBy('sort')->where('sort = 0')->all();
+
 ?>
 
 <div class="site-info" id="section-info">
@@ -50,21 +56,34 @@
 			</tbody>
 		</table>
 
-		<table class="table" id="tbl-files">
+
+		<table class="table-data" id="tbl-files">
 			<thead>
 			<tr>
 								<th class="table-col1">&nbsp;</th>
-								<th class="table-col2">Дата публикации</th>
+								<th class="table-col3">Дата публикации</th>
 				<!--				<th class="table-col4">Срок доступа</th>-->
 			</tr>
 			</thead>
 			<tbody>
+
+			<?php
+			foreach ($groups as $group) {
+				if ($group) {
+					$docs = $group->getOpenDocs()->orderBy('id')->all();
+
+				 foreach ($docs as $doc) {
+				$file = UkpFiles::find()->where('id=' . $doc->image_id)->one();
+				?>
 			<tr>
-				<td>Наименование документа</td>
-				<td></td>
-								<td>&nbsp;</td>
-				<!--				<td>&nbsp;</td>-->
+				<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
+				<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
 			</tr>
+			<?php }
+				}
+			}
+			?>
+
 			</tbody>
 		</table>
 

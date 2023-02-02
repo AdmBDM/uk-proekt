@@ -9,6 +9,8 @@ use common\models\DocsGroup;
 use common\models\OpenDocs;
 use common\models\UkpFiles;
 
+$groups = DocsGroup::find()->orderBy('sort')->where('sort > 0')->all();
+
 ?>
 
 <!--<div class="site-open_data" id="section-open_data">-->
@@ -41,7 +43,8 @@ use common\models\UkpFiles;
 			</div>
 		</div>
 
-		<?php foreach (DocsGroup::find()->orderBy('sort')->all() as $group) {
+		<?php foreach ($groups as $group) {
+//		      foreach (DocsGroup::find()->orderBy('sort')->where('sort > 0')->all() as $group)
 			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->where('image_id > 0')->all();
 
 			if ($docs) {
