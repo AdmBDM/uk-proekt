@@ -2,14 +2,14 @@
 
 /* @var $this yii\web\View */
 /* @var $group DocsGroup */
+/* @var $groups DocsGroup */
 /* @var $docs OpenDocs */
 /* @var $doc OpenDocs */
+/* @var $opdocs OpenDocs */
 
 use common\models\DocsGroup;
 use common\models\OpenDocs;
-use common\models\UkpFiles;
-
-$groups = DocsGroup::find()->orderBy('sort')->where('sort > 0')->all();
+//use common\models\UkpFiles;
 
 ?>
 
@@ -44,33 +44,42 @@ $groups = DocsGroup::find()->orderBy('sort')->where('sort > 0')->all();
 		</div>
 
 		<?php foreach ($groups as $group) {
-//		      foreach (DocsGroup::find()->orderBy('sort')->where('sort > 0')->all() as $group)
 			$docs = $group->getOpenDocs()->orderBy('pub_date_start desc')->where('image_id > 0')->all();
 
-			if ($docs) {
-				?>
-				<table class="table-data">
-					<caption><?= $group->name_group ?></caption>
-					<thead>
-					<tr>
-						<th class="table-col1">Наименование</th>
-						<th class="table-col2">Дата публикации</th>
-						<th class="table-col3">Срок доступа</th>
-					</tr>
-					</thead>
-					<tbody>
-					<?php foreach ($docs as $doc) {
-						$file = UkpFiles::find()->where('id=' . $doc->image_id)->one();
-						?>
+			if ($docs) { ?>
+				<div class="caption">
+					<?= $group->name_group ?>
+					<div class="span-arrow">
+						<span id="mode<?= $group->id ?>" onclick="modeView(<?= $group->id ?>)"> ▼ </span>
+					</div>
+				</div>
+
+				<div id="tinfo<?= $group->id ?>" class="not_show">
+					<table class="table-data">
+						<thead>
 						<tr>
-							<td><a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>" target="_blank"><?= $doc->original_file_name ?></a></td>
-							<td><?= date('d.m.Y H:i',strtotime($doc->pub_date_start)) ?></td>
-							<td><?= ($doc->pub_date_end ? date('d.m.Y',strtotime($doc->pub_date_end)) : 'Бессрочно')  ?></td>
+							<th class="table-col1">Наименование</th>
+							<th class="table-col2">Дата публикации</th>
+							<th class="table-col3">Срок доступа</th>
 						</tr>
-					<?php } ?>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+						<?php foreach ($docs as $doc) {
+							$file = $doc->getUkpFiles()->one();
+							?>
+							<tr>
+								<td>
+									<a href="<?= $file['full_path'] . $file['internal_file_name'] ?>.<?= $file['file_ext'] ?>"
+									   target="_blank"><?= $doc->original_file_name ?></a></td>
+								<td><?= date('d.m.Y H:i', strtotime($doc->pub_date_start)) ?></td>
+								<td><?= ($doc->pub_date_end ? date('d.m.Y', strtotime($doc->pub_date_end)) : 'Бессрочно') ?></td>
+							</tr>
+						<?php } ?>
+						</tbody>
+					</table>
+				</div>
 			<?php }} ?>
 
 	</div>
 </div>
+

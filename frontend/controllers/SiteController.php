@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\DocsGroup;
+//use common\models\OpenDocs;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -20,7 +22,6 @@ use yii\web\Response;
 /**
  * Site controller
  */
-//class SiteController extends Controller
 class SiteController extends UkpMainController
 {
 	/**
@@ -73,9 +74,9 @@ class SiteController extends UkpMainController
 	/**
 	 * Displays homepage.
 	 *
-	 * @return string|Response
+	 * @return string
 	 */
-	public function actionIndex()
+	public function actionIndex(): string
 	{
 //		$model = new ContactForm();
 //		if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -150,7 +151,7 @@ class SiteController extends UkpMainController
 		return $this->render('contact', [
 			'model' => $model,
 		]);
-		return $this->render('contact');
+//		return $this->render('contact');
 	}
 
 	/**
@@ -170,7 +171,11 @@ class SiteController extends UkpMainController
 	 */
 	public function actionOpenInfo(): string
 	{
-		return $this->render('open-info');
+		$groups = DocsGroup::find()->orderBy('sort')->where('sort > 0')->all();
+
+		return $this->render('open-info', [
+			'groups' => $groups,
+		]);
 	}
 
 	/**

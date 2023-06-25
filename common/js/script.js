@@ -80,7 +80,21 @@ $("[id*='year-']").click(function () {
 			$curNews.removeAttr('hidden');
 		} else {
 			$curNews.attr('hidden', 'hidden');
-		};
+		}
 	});
 	// console.log($(this).html());
 });
+
+function modeView(group) {
+	let gr = `#mode${group}`;
+	let ti = `#tinfo${group}`;
+
+	if ($(gr).html() === ' ▼ ') {
+		$(gr).html(' ▲ ');
+		$(ti).removeClass('not_show');
+	}
+	else {
+		$(gr).html(' ▼ ');
+		$(ti).addClass('not_show');
+	}
+}

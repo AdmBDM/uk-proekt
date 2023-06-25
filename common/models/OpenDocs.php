@@ -63,4 +63,14 @@ class OpenDocs extends ActiveRecord
 	{
 		return $this->hasOne(DocsGroup::class, ['id' => 'docs_group_id']);
 	}
+
+	/**
+	 * Gets query for [[UkpFiles]].
+	 *
+	 * @return ActiveQuery
+	 */
+	public function getUkpFiles(): ActiveQuery
+	{
+		return $this->hasOne(UkpFiles::class, ['id' => 'image_id']);
+	}
 }
