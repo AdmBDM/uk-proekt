@@ -1,3 +1,6 @@
+.not_show
+	display: none
+
 .site-index
 	.owl-carousel
 		.item
@@ -252,12 +255,54 @@
 
 
 	.table-data
-		margin: 30px auto 50px
+		//margin: 30px auto 50px
+		margin: 0 auto
+
+	.caption
+		margin-top: 30px
+		color: $btn_clr
+		text-align: left
+		font-size: 28px
+		//margin-bottom: 10px
+		font-weight: 700
+		padding-top: 0.75rem
+		//padding-bottom: 0.75rem
+
+		.span-arrow
+			display: inline-block
+
+			span
+				display: inline-list-item
+				color: $btn_clr
+				font-size: 20px
+				width: 40px
+				text-align: center
+
+		span:hover
+			cursor: pointer
+
 
 	table
 		caption
 			color: $btn_clr
 			text-align: left
+
+		caption
+			.span-arrow
+				display: inline-block
+
+				span
+					display: inline-list-item
+					color: $btn_clr
+					font-size: 20px
+					width: 40px
+					text-align: center
+
+			span:hover
+				cursor: pointer
+
+		tr
+			width: 100%
 
 		.table-col1
 			width: 70%
@@ -274,7 +319,6 @@
 
 
 .site-news
-	//margin-top: $height_header_nav
 	margin-bottom: $height_header_nav
 
 	.logo-news
