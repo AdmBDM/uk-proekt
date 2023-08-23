@@ -37,10 +37,10 @@ class FileLoadHelper
 	 * @param string $curGr
 	 * @return string
 	 */
-	public static function getDocsPath(string $curGr = '0'): string
+	public static function getDocsPath(string $curGr = '0', bool $toLoad = false ): string
 	{
-//		return '/' .
-		return '' .
+		$cS = $toLoad ? Yii::getAlias('@webroot') . '/' : '';
+		return $cS .
 			Yii::$app->params['dir']['files'] .
 			Yii::$app->params['dir']['docs'] .
 			$curGr . '/';

@@ -201,7 +201,7 @@ class OpenDocsController extends MyController
 		if (is_null($imageFile)) return;
 
 		$model->file_ext = $imageFile->getExtension();
-		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
+		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr'], true) . $model->system_file_name . '.' . $model->file_ext);
 
 // формируем запись для БД
 		$fileUKP = new UkpFiles();
@@ -214,7 +214,7 @@ class OpenDocsController extends MyController
 		$fileUKP->external_file_name = $imageFile->getBaseName();
 		$fileUKP->controller = 'OpenDocs->New';
 
-		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
+//		$imageFile->saveAs(FileLoadHelper::getDocsPath($_SESSION['__curGr']) . $model->system_file_name . '.' . $model->file_ext);
 
 		$fileUKP->save();
 
